@@ -1,5 +1,20 @@
-  git init
-  git add README.md
-  git commit -m "first commit"
+
+#Clonar repo
+git clone git@github.com:herpablo88/CineTPWeb32017.git
+
+#Empezar repo:
+git init
+
+#Agregar un file
+git add archivo.txt
+
+#Hacer commit una vez que se hizo lo que se necesitaba
+git commit -m "first commit"  
+  
+#Pushear los cambios al repositorio remoto
+git push -u origin master
+
+
+#Arrancar repo de cero
   git remote add origin git@github.com:herpablo88/CineTPWeb32017.git
-  git push -u origin master
+  

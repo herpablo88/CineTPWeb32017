@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Administracion_Reportes";
+}
+
+@{Html.RenderPartial("_AdministracionPartial");}
+<h1>Administración: Reportes</h1>
+
+<div class="row">
+    <div class="col-sm-9">
+        <h3>Reporte de Reservas</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sede</th>
+                    <th>Versión</th>
+                    <th>Película</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*@foreach (Reserva r in Model)
+                        {
+                    <tr>
+                        <td>@r.IdReserva</td>
+                        <td>@r. </td>
+                        <td>@r. </td>
+                        <td>@r. </td>
+                        <td>@r. </td>
+                    </tr>
+                     }*@
+
+
+                @*Borrar esto al conectar el modelo*@
+                <tr>
+                    <td>r.IdReserva</td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                </tr>
+                <tr>
+                    <td>r.IdReserva</td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                </tr>
+                <tr>
+                    <td>r.IdReserva</td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                </tr>
+                <tr>
+                    <td>r.IdReserva</td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                </tr>
+                <tr>
+                    <td>r.IdReserva</td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                    <td>r. </td>
+                </tr>
+                @*Fin de lo que hay que borrar*@
+            </tbody>
+        </table>
+    </div>
+</div>

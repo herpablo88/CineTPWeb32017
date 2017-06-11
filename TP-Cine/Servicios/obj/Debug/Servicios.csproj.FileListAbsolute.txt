@@ -1,0 +1,5 @@
+C:\Users\Maggie\Desktop\Nueva carpeta\TP-Cine\Servicios\bin\Debug\Servicios.dll
+C:\Users\Maggie\Desktop\Nueva carpeta\TP-Cine\Servicios\bin\Debug\Servicios.pdb
+C:\Users\Maggie\Desktop\Nueva carpeta\TP-Cine\Servicios\obj\Debug\Servicios.csprojResolveAssemblyReference.cache
+C:\Users\Maggie\Desktop\Nueva carpeta\TP-Cine\Servicios\obj\Debug\Servicios.dll
+C:\Users\Maggie\Desktop\Nueva carpeta\TP-Cine\Servicios\obj\Debug\Servicios.pdb
