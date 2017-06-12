@@ -1,11 +1,26 @@
 ﻿
 <div id="menuAdmin" class="navbar">
-<ul class="nav navbar-nav">
-    <li><a href="/Administracion/Inicio">Admin</a></li>
+ 
+@if (Session["administrador"]!= null)
+{
+ <ul class="nav navbar-nav">
+    <li><a href="/Administracion/Inicio"> Home Administrativa</a></li>
     <li><a href="/Administracion/Peliculas">Gestión de Películas</a></li>
     <li><a href="/Administracion/Sedes">Gestión de Sedes</a></li>
     <li><a href="/Administracion/Carteleras">Gestión de Carteleras</a></li>
     <li><a href="/Administracion/Reportes">Gestión de Reportes</a></li>
-</ul>
+ </ul>
+}
+else
+{
+ <ul class="nav navbar-nav">
+    <li><a href="@Url.Action("login", "home", new { ReturnUrl = "/Administracion/Inicio" })"> Home Administrativa</a></li>
+    <li><a href="@Url.Action("login", "home", new { ReturnUrl = "/Administracion/Peliculas" })" >Gestión de Películas</a></li>
+    <li><a href="@Url.Action("login", "home", new { ReturnUrl = "/Administracion/Sedes" })" >Gestión de Sedes</a></li>
+    <li><a href="@Url.Action("login", "home", new { ReturnUrl = "/Administracion/Carteleras" })" >Gestión de Carteleras</a></li>
+    <li><a href="@Url.Action("login", "home", new { ReturnUrl = "/Administracion/Reportes" })" >Gestión de Reportes</a></li>
+ </ul>
+}
+
 </div>
 

@@ -16,15 +16,16 @@ namespace TP_Cine.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
-            return View("Login");
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
         }
 
   
         // POST: /Account/Login
         [HttpPost]
-        public ActionResult Login(TP_Cine.Usuarios usuario)
+        public ActionResult Login(TP_Cine.Usuarios usuario, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -34,7 +35,7 @@ namespace TP_Cine.Controllers
                 if (c>0)
                 {  // encontro cuenta de usuario
                     Session["administrador"]=1;
-                    return RedirectToAction("Inicio", "Home");
+                    return Redirect(returnUrl);
                 }
                 else
                 {

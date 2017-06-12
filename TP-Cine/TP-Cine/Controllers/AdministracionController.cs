@@ -27,7 +27,7 @@ namespace TP_Cine.Controllers
         }
 
         public ActionResult Carteleras()
-        {
+        {   
             return View();
         }
 
