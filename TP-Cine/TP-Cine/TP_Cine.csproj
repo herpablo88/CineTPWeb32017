@@ -124,21 +124,6 @@
     <Compile Include="Carteleras.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="CineModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CineModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CineModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CineModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CineModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CineModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeliculasController.cs" />
@@ -254,27 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="CineModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CineModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="CineModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CineModel.edmx</DependentUpon>
-      <LastGenOutput>CineModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CineModel.edmx.diagram">
-      <DependentUpon>CineModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="CineModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CineModel.edmx</DependentUpon>
-      <LastGenOutput>CineModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
