@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,7 +11,6 @@ namespace TP_Cine.Controllers
     {
         //
         // GET: /Home/
-
         public ActionResult Inicio()
         {
             return View();
@@ -18,14 +18,37 @@ namespace TP_Cine.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View("Login");
         }
 
+  
+        // POST: /Account/Login
         [HttpPost]
-        public ActionResult Login(FormCollection f)
+        public ActionResult Login(TP_Cine.Usuarios usuario)
         {
-            return View();
-        }
+            if (ModelState.IsValid)
+            {
+                Entities conexion= new Entities();
+                int c= conexion.Usuarios.SqlQuery("SELECT * FROM [20171C_TP].[dbo].[Usuarios] where [NombreUsuario]='"+usuario.NombreUsuario+"' and [Password]='"+usuario.Password+"'").Count();
 
+                if (c>0)
+                {  // encontro cuenta de usuario
+                    Session["administrador"]=1;
+                    return RedirectToAction("Inicio", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Usuario o password invalidos.");
+                }
+            }
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(usuario);
+        }
+        public ActionResult LogOut()
+        {
+            Session["administrador"] = null;
+            return RedirectToAction("Inicio", "Home");
+        }
     }
+
 }

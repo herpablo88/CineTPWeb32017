@@ -70,3 +70,44 @@ D:\Documents\Visual Studio 2012\Projects\TP-Cine\TP-Cine\bin\es\System.Web.WebPa
 D:\Documents\Visual Studio 2012\Projects\TP-Cine\TP-Cine\obj\Debug\TP_Cine.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2012\Projects\TP-Cine\TP-Cine\obj\Debug\TP_Cine.dll
 D:\Documents\Visual Studio 2012\Projects\TP-Cine\TP-Cine\obj\Debug\TP_Cine.pdb
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.dll.config
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.pdb
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\Newtonsoft.Json.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Net.Http.Formatting.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Helpers.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Http.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Http.WebHost.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Mvc.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Razor.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Razor.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\Newtonsoft.Json.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Net.Http.Formatting.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Helpers.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Http.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Http.WebHost.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Mvc.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Razor.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Razor.xml
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Http.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Razor.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.dll
+C:\Users\Administrador\Source\Repos\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.pdb

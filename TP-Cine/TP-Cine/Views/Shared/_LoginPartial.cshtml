@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "_LoginPartial";
+}
+@if (Session["administrador"]!= null)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/Administracion/Inicio">Administracion</a></li>
+        <li><a href="/Home/Logout">Cerrar sesión</a></li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+         <li><a href="/Home/Login">Iniciar Sesión</a></li>
+    </ul>
+}
