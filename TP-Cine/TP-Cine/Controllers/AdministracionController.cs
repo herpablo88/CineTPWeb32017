@@ -131,6 +131,43 @@ namespace TP_Cine.Controllers
             return View();
         }
 
-       
+        //Modificar sede
+
+        public PartialViewResult ModificarSede(int id)
+        {
+            Entities ctx = new Entities();
+            Sedes sede = new Sedes();
+
+            var editar = (from sedes in ctx.Sedes
+                          where sedes.IdSede == id
+                          select sedes).ToList();
+
+            sede = editar.First();
+
+
+            ViewBag.sede = editar;
+
+            return PartialView("_ModifSede", sede);
+        }
+
+        public ActionResult ModificaSede(FormCollection form)
+        {
+            Entities ctx = new Entities();
+            
+            int id = int.Parse(form["IdSede"]);
+
+            Sedes sede = (from sedes in ctx.Sedes
+                          where sedes.IdSede == id
+                          select sedes).First();
+
+            sede.Nombre = form["Nombre"];
+            sede.Direccion = form["Direccion"];
+            sede.PrecioGeneral = Convert.ToDecimal(form["PrecioGeneral"]);
+
+            ctx.SaveChanges();
+
+            return RedirectToAction("Sedes");
+
+        }
     }
 }

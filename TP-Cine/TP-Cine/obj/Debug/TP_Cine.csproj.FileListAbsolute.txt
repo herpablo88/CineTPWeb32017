@@ -151,3 +151,35 @@ C:\Users\Victor\Repositorio\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Web
 C:\Users\Victor\Repositorio\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.csprojResolveAssemblyReference.cache
 C:\Users\Victor\Repositorio\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.dll
 C:\Users\Victor\Repositorio\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.pdb
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.dll.config
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\TP_Cine.pdb
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.SqlServer.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\Newtonsoft.Json.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Helpers.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Mvc.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Razor.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Razor.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\EntityFramework.SqlServer.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\Newtonsoft.Json.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Helpers.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Mvc.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.Razor.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\System.Web.WebPages.Razor.xml
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.Razor.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.csprojResolveAssemblyReference.cache
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.dll
+C:\Users\Maggie\Desktop\Progra Web 3\TP\CineTPWeb32017\TP-Cine\TP-Cine\obj\Debug\TP_Cine.pdb
