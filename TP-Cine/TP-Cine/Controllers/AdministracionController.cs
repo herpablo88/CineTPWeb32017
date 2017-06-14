@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace TP_Cine.Controllers
 {
@@ -74,9 +78,12 @@ namespace TP_Cine.Controllers
         }
 
         public ActionResult Carteleras()
-        {   
-            return View();
+        {  
+            Entities db = new Entities();
+            var carteleras = db.Carteleras.Include(c => c.Peliculas).Include(c => c.Sedes).Include(c => c.Versiones);
+            return View(carteleras.ToList());
         }
+        
 
         public ActionResult Reportes()
         {
