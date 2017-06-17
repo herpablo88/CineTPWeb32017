@@ -17,43 +17,7 @@ namespace TP_Cine.Controllers
 
         public ActionResult Inicio()
         {
-            Entities ctx = new Entities();
-            var generos = (from Generos in ctx.Generos
-                           select Generos);
-            if (generos.Count() == 0)
-            {
-                Generos g1 = new Generos();
-                Generos g2 = new Generos();
-                Generos g3 = new Generos();
-
-                g1.Nombre = "Terror";
-                g2.Nombre = "Thriller";
-                g3.Nombre = "Acción";
-
-                ctx.Generos.Add(g1);
-                ctx.Generos.Add(g2);
-                ctx.Generos.Add(g3);
-            }
-
-            var calificaciones = (from Calificaciones in ctx.Calificaciones
-                                  select Calificaciones);
-            if (calificaciones.Count() == 0)
-            {
-                Calificaciones c1 = new Calificaciones();
-                Calificaciones c2 = new Calificaciones();
-                Calificaciones c3 = new Calificaciones();
-
-                c1.Nombre = "ATP";
-                c2.Nombre = "mayores de 13";
-                c3.Nombre = "mayores de 13 con reservas";
-
-                ctx.Calificaciones.Add(c1);
-                ctx.Calificaciones.Add(c2);
-                ctx.Calificaciones.Add(c3);
-            }
-
-            ctx.SaveChanges();
-
+            
             return View();
         }
 
@@ -74,7 +38,7 @@ namespace TP_Cine.Controllers
             todasSedes = (List<Sedes>)listaSedes;
 
             return View(todasSedes);
-            //return View();
+           
         }
 
         public ActionResult Carteleras()
@@ -121,7 +85,6 @@ namespace TP_Cine.Controllers
             ctx.Sedes.Add(sede);
             ctx.SaveChanges();
 
-            //return View("Sedes");
             return RedirectToAction("Sedes");
         }
 
