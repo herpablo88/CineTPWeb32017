@@ -190,4 +190,12 @@ ModelManifest.xml
 
 #Ignore personales
 TP-Cine/TP-Cine/Web.config
-TP-Cine/TP-Cine/Web.config
+TP-Cine/TP-Cine/obj/Debug/TP_Cine.dll
+TP-Cine/TP-Cine/obj/Debug/TP_Cine.csprojResolveAssemblyReference.cache
+TP-Cine/TP-Cine/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+TP-Cine/TP-Cine/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+TP-Cine/TP-Cine/bin/TP_Cine.pdb
+TP-Cine/TP-Cine/bin/TP_Cine.dll.config
+TP-Cine/TP-Cine/bin/TP_Cine.dll
+TP-Cine/TP-Cine/TP_Cine.csproj.user
+TP-Cine/TP-Cine/TP_Cine.csproj

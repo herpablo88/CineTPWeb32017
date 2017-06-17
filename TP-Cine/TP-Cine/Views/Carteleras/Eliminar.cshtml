@@ -1,0 +1,143 @@
+﻿@model TP_Cine.Carteleras
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+@{Html.RenderPartial("_AdministracionPartial");}
+<h2>Eliminar</h2>
+
+<h3>Eliminar Cartelera</h3>
+<div>
+    <h4>Carteleras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Peliculas.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peliculas.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sedes.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sedes.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Versiones.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Versiones.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroSala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lunes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lunes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Martes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Martes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Miercoles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miercoles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jueves)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jueves)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Viernes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Viernes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sabado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sabado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domingo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domingo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCarga)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+      
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Cartelera" class="btn btn-default" />
+     
+        </div>
+    }
+</div>
