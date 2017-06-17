@@ -55,6 +55,15 @@ namespace TP_Cine.Controllers
 
         public ActionResult Peliculas()
         {
+            //Se cargan las categorias y generos
+            Entities ctx = new Entities();
+            List<Generos> generos_form = ctx.Generos.ToList();
+            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
+            List<Peliculas> peliculas_form = ctx.Peliculas.ToList();
+            ViewBag.generos = generos_form;
+            ViewBag.calificaciones = calificaciones_form;
+            ViewBag.peliculas = peliculas_form;
+
             return View();
         }
 
@@ -70,7 +79,7 @@ namespace TP_Cine.Controllers
             todasSedes = (List<Sedes>)listaSedes;
 
             return View(todasSedes);
-            //return View();
+            return View();
         }
 
         public ActionResult Carteleras()
@@ -89,17 +98,33 @@ namespace TP_Cine.Controllers
         {
             Entities ctx = new Entities();
             Peliculas peli = new Peliculas();
+            Calificaciones calif = new Calificaciones();
+            Generos gen = new Generos();
 
             peli.Nombre = form["nombre"];
             peli.Descripcion = form["descripcion"];
-            //peli.Calificaciones = form["calificacion"];
-            //peli.Generos = form["genero"];
-            peli.Imagen = form["imagen"];
+            var c = form["calificacion"];
+            peli.Calificaciones = ctx.Calificaciones.Find(Convert.ToInt32(c)); 
+            var g = form["genero"];
+            peli.Generos = ctx.Generos.Find(Convert.ToInt32(g));
+            peli.Imagen = form["imagen"];//cambiar por img_64 para base64
             peli.Duracion = Convert.ToInt16(form["duracion"]);
+            peli.FechaCarga = DateTime.Now;
+
+            ctx.Peliculas.Add(peli);
+            ctx.SaveChanges();
 
             return View("Peliculas");
         }
 
+        //Obtener datos de una pelicula
+        public ActionResult VerPelicula(int IdPelicula)
+        {
+            Entities ctx = new Entities();
+            Peliculas pelicula = ctx.Peliculas.Find(IdPelicula);
+
+            return View(pelicula);
+        }
         //Agregar sede nueva
         [HttpPost]
         public ActionResult AgregarSede(FormCollection form)

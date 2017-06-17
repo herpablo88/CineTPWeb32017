@@ -13,58 +13,20 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @*@foreach (Pelicula p in Model)
+                @foreach (var pelicula in ViewBag.peliculas)
                         {
                     <tr>
-                        <td>@p.IdPelicula</td>
-                        <td>@p.Nombre</td>
-                        <td><a href="">Ver</a></td>
-                        <td><a href="">Modificar</a></td>
+                        <td>@pelicula.IdPelicula</td>
+                        <td>@pelicula.Nombre</td>
+                        <td><a href="VerPelicula/@pelicula.IdPelicula">Ver</a></td>
+                        <td><a href="ModificarPelicula/@pelicula.IdPelicula">Modificar</a></td>
                     </tr>
-                     }*@
+                     }
 
-
-                @*Borrar esto al conectar el modelo*@
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                <tr>
-                    <td>p.IdPelicula</td>
-                    <td>p.Nombre</td>
-                    <td><a href="">Ver</a></td>
-                    <td><a href="">Modificar</a></td>
-                </tr>
-                @*Fin de lo que hay que borrar*@
             </tbody>
         </table>
     </div>
@@ -85,9 +47,6 @@
                     </div>
                     <form method="post" action="AgregarPelicula">
                         <div class="modal-body">
-                            @using (Html.BeginForm("AgregarPelicula", "Administracion", FormMethod.Post))
-                            {
-                                @* Despues hacerlos con html helper *@
                                 <div class="form-group">
                                     <label>Nombre:</label>
                                     <input id="Text1" type="text" class="form-control" name="nombre" />
@@ -98,38 +57,38 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Calificación:</label>
-                                    <select id="Select1" name="calificaion">
-                                        <option value="null" >Seleccione una Calificacion</option>
-                                        <option value="ATP" >ATP</option>
-                                        <option value="Mayores de 13" >Mayores de 13</option>
-                                        <option value="Mayores de 13 con reserva" >Mayores de 13 con reserva</option>
-                                        <option value="Mayores de 16" >Mayores de 16</option>
-                                        <option value="Mayores de 16 con reserva" >Mayores de 16 con reserva</option>
+                                    <select id="Select1" name="calificacion">
+                                        @foreach (var genero in ViewBag.generos)
+                                        {
+                                            <option value="@genero.IdGenero">@genero.Nombre</option>
+                                        }  
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Género:</label>
                                     <select id="Select2" name="genero">
-                                        <option value="Terror" >Terror</option>
-                                        <option value="Thiller" >Thiller</option>
-                                        <option value="Acción" >Acción</option>
-                                        <option value="Comedia" >Comedia</option>
+                                        @foreach (var calificacion in ViewBag.calificaciones)
+                                        {
+                                            <option value="@calificacion.IdCalificacion">@calificacion.Nombre</option>
+                                        }  
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Imágen:</label>
-                                    <input id="File1" type="file" class="form-control" name="imagen" />
+                                    <!--<input id="File1" type="file" class="form-control" name="imagen" />-->
+                                    <input type="file" name="imagen" onchange="previewFile()">
+                                    <img src="" height="200" alt="" id="imgframe">
                                 </div>
                                 <div class="form-group">
                                     <label>Duración:</label>
                                     <input id="Text3" type="text" class="form-control" name="duracion" />
                                 </div>
-                            }
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-default">Agregar</button>
+                            <button type="submit" class="btn btn-default">Agregar</button>
                         </div>
+                        <input type="hidden" value="" id="img_64" name="img_64" />
                     </form>
                 </div>
             </div>
@@ -137,3 +96,37 @@
     </div>
 
 </div>
+<script>
+    var flag = 0;
+    function previewFile() {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+        var base64 = getBase64Image(document.getElementById("imgframe"));
+        document.getElementById('img_64').value = base64;
+
+        if (flag == 0) {
+            flag = 1;
+            previewFile();
+        }
+    }
+
+    function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
+</script>

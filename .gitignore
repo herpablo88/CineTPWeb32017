@@ -187,3 +187,7 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+#Ignore personales
+TP-Cine/TP-Cine/Web.config
+TP-Cine/TP-Cine/Web.config

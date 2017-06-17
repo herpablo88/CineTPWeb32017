@@ -27,7 +27,7 @@ namespace TP_Cine
 
             routes.MapRoute(
                 name: "Administracion",
-                url: "{controller}/{action}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Administracion", action = "Inicio", id = UrlParameter.Optional }
             );
 
