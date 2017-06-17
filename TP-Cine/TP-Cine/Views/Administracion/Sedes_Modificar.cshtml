@@ -1,0 +1,43 @@
+﻿@using TP_Cine
+
+@model Sedes
+
+@{
+    ViewBag.Title = "Modificar Sede";
+}
+@{Html.RenderPartial("_AdministracionPartial");}
+
+<h2>Modificar Sede</h2>
+
+@using (Html.BeginForm("ModificaSede", "Administracion", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.HiddenFor(model => model.IdSede)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Nombre, Model.Nombre)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Direccion, "Dirección", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Direccion, Model.Direccion)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrecioGeneral, "Precio Entrada Gral", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.PrecioGeneral, Model.PrecioGeneral)
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Modificar" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+

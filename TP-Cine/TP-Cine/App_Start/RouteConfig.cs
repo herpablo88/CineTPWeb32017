@@ -31,7 +31,6 @@ namespace TP_Cine
                 defaults: new { controller = "Administracion", action = "Inicio", id = UrlParameter.Optional }
             );
 
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

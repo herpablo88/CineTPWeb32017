@@ -152,6 +152,7 @@
     <Compile Include="Models\Calificaciones.cs" />
     <Compile Include="Models\Carteleras.cs" />
     <Compile Include="Models\Generos.cs" />
+    <Compile Include="Models\ModeloNegocio\CineNegocio.cs" />
     <Compile Include="Models\Peliculas.cs" />
     <Compile Include="Models\Reservas.cs" />
     <Compile Include="Models\Sedes.cs" />
@@ -280,7 +281,7 @@
     <Content Include="Views\Carteleras\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_ModifSede.cshtml" />
+    <Content Include="Views\Administracion\Sedes_Modificar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

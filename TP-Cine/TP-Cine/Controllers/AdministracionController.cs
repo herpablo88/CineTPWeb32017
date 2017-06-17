@@ -6,12 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TP_Cine.Models.ModeloNegocio;
 
 
 namespace TP_Cine.Controllers
 {
     public class AdministracionController : Controller
     {
+        CineNegocio CN = new CineNegocio(); //Si lo creamos aca no es necesario agregarlo en todas las acciones
+       
         //
         // GET: /Administracion/
 
@@ -21,26 +24,54 @@ namespace TP_Cine.Controllers
             return View();
         }
 
+        //Gestión de Sedes
+        public ActionResult Sedes()
+        {
+            CN.listarSedes();
+
+            return View(CN.listaSedes);
+        }
+
+        [HttpPost]
+        public ActionResult AgregarSede(FormCollection form)
+        {
+            Entities ctx = new Entities();
+            Sedes sede = new Sedes();
+
+            sede.Nombre = form["nombre"];
+            sede.Direccion = form["direccion"];
+            sede.PrecioGeneral = Convert.ToDecimal(form["precioGeneral"]);
+
+            ctx.Sedes.Add(sede);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Sedes");
+        }
+
+        public ActionResult Sedes_Modificar(int id)
+        {
+            Sedes sede = new Sedes();
+
+            sede = CN.obtenerSede(id);
+
+            return View(sede);
+        }
+
+        public ActionResult ModificaSede(FormCollection form)
+        {
+            CN.modificarSede(int.Parse(form["IdSede"]), form["Nombre"], form["Direccion"], Convert.ToDecimal(form["PrecioGeneral"]));
+
+            return RedirectToAction("Sedes");
+
+        }
+
+        //
         public ActionResult Peliculas()
         {
             return View();
         }
 
-        public ActionResult Sedes()
-        {
-            List<Sedes> todasSedes = new List<Sedes>();
-
-            Entities ctx = new Entities();
-
-            var listaSedes = (from sedes in ctx.Sedes
-                              select sedes).ToList();
-
-            todasSedes = (List<Sedes>)listaSedes;
-
-            return View(todasSedes);
-           
-        }
-
+        
         public ActionResult Carteleras()
         {  
             Entities db = new Entities();
@@ -71,66 +102,13 @@ namespace TP_Cine.Controllers
             return View("Peliculas");
         }
 
-        //Agregar sede nueva
-        [HttpPost]
-        public ActionResult AgregarSede(FormCollection form)
-        {
-            Entities ctx = new Entities();
-            Sedes sede = new Sedes();
-
-            sede.Nombre = form["nombre"];
-            sede.Direccion = form["direccion"];
-            sede.PrecioGeneral = Convert.ToDecimal(form["precioGeneral"]);
-
-            ctx.Sedes.Add(sede);
-            ctx.SaveChanges();
-
-            return RedirectToAction("Sedes");
-        }
-
+        
         //Agregar cartelera nueva
         public ActionResult AgregarCartelera()
         {
             return View();
         }
 
-        //Modificar sede
-
-        public PartialViewResult ModificarSede(int id)
-        {
-            Entities ctx = new Entities();
-            Sedes sede = new Sedes();
-
-            var editar = (from sedes in ctx.Sedes
-                          where sedes.IdSede == id
-                          select sedes).ToList();
-
-            sede = editar.First();
-
-
-            ViewBag.sede = editar;
-
-            return PartialView("_ModifSede", sede);
-        }
-
-        public ActionResult ModificaSede(FormCollection form)
-        {
-            Entities ctx = new Entities();
-            
-            int id = int.Parse(form["IdSede"]);
-
-            Sedes sede = (from sedes in ctx.Sedes
-                          where sedes.IdSede == id
-                          select sedes).First();
-
-            sede.Nombre = form["Nombre"];
-            sede.Direccion = form["Direccion"];
-            sede.PrecioGeneral = Convert.ToDecimal(form["PrecioGeneral"]);
-
-            ctx.SaveChanges();
-
-            return RedirectToAction("Sedes");
-
-        }
+       
     }
 }
