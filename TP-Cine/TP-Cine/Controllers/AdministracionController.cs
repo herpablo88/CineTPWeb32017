@@ -35,16 +35,8 @@ namespace TP_Cine.Controllers
         [HttpPost]
         public ActionResult AgregarSede(FormCollection form)
         {
-            Entities ctx = new Entities();
-            Sedes sede = new Sedes();
-
-            sede.Nombre = form["nombre"];
-            sede.Direccion = form["direccion"];
-            sede.PrecioGeneral = Convert.ToDecimal(form["precioGeneral"]);
-
-            ctx.Sedes.Add(sede);
-            ctx.SaveChanges();
-
+            CN.agregarSede(form["nombre"],form["direccion"],Convert.ToDecimal(form["precioGeneral"]));
+            
             return RedirectToAction("Sedes");
         }
 
