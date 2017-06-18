@@ -22,8 +22,8 @@
                     <tr>
                         <td>@pelicula.IdPelicula</td>
                         <td>@pelicula.Nombre</td>
-                        <td><a href="VerPelicula/@pelicula.IdPelicula">Ver</a></td>
-                        <td><a href="ModificarPelicula/@pelicula.IdPelicula">Modificar</a></td>
+                        <td><a href="VerEditarPelicula/@pelicula.IdPelicula/ver">Ver</a></td>
+                        <td><a href="VerEditarPelicula/@pelicula.IdPelicula/editar">Modificar</a></td>
                     </tr>
                      }
 
@@ -45,7 +45,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="AgregarPelicula">
+                    <form method="post" action="AgregarEditarPelicula">
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label>Nombre:</label>

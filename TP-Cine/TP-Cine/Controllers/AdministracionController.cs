@@ -101,12 +101,16 @@ namespace TP_Cine.Controllers
 
         //Agregar pelicula nueva
         [HttpPost]
-        public ActionResult AgregarPelicula(FormCollection form)
+        public ActionResult AgregarEditarPelicula(FormCollection form)
         {
             Entities ctx = new Entities();
             Peliculas peli = new Peliculas();
             Calificaciones calif = new Calificaciones();
             Generos gen = new Generos();
+
+            if (form.AllKeys.Contains("id")) {
+                peli = ctx.Peliculas.Find(Convert.ToInt32(form["id"]));
+            }
 
             peli.Nombre = form["nombre"];
             peli.Descripcion = form["descripcion"];
@@ -116,21 +120,32 @@ namespace TP_Cine.Controllers
             peli.Generos = ctx.Generos.Find(Convert.ToInt32(g));
             peli.Imagen = form["imagen"];//cambiar por img_64 para base64
             peli.Duracion = Convert.ToInt16(form["duracion"]);
-            peli.FechaCarga = DateTime.Now;
 
-            ctx.Peliculas.Add(peli);
+            if (!form.AllKeys.Contains("id"))
+            {
+                peli.FechaCarga = DateTime.Now;
+                ctx.Peliculas.Add(peli);
+            }
+            
             ctx.SaveChanges();
 
-            return View("Peliculas");
+            return RedirectToAction("Peliculas");
         }
 
         //Obtener datos de una pelicula
-        public ActionResult VerPelicula(int IdPelicula)
+        public ActionResult VerEditarPelicula(String id, String accion)
         {
             Entities ctx = new Entities();
-            Peliculas pelicula = ctx.Peliculas.Find(IdPelicula);
+            Peliculas peli = ctx.Peliculas.Find(Convert.ToInt32(id));
+            List<Generos> generos_form = ctx.Generos.ToList();
+            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
 
-            return View(pelicula);
+            ViewBag.pelicula = peli;
+            ViewBag.modo = accion;
+            ViewBag.generos = generos_form;
+            ViewBag.calificaciones = calificaciones_form;
+
+            return View();
         }
         //Agregar sede nueva
         [HttpPost]

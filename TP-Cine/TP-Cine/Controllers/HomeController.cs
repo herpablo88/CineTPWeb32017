@@ -35,7 +35,7 @@ namespace TP_Cine.Controllers
                 if (c>0)
                 {  // encontro cuenta de usuario
                     Session["administrador"]=1;
-                    //return Redirect(returnUrl);
+                    return Redirect(returnUrl);
                 }
                 else
                 {

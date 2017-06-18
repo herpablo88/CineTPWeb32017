@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Administracion_Peliculas";
+}
+
+@{Html.RenderPartial("_AdministracionPartial");}
+
+<h1>Administración: Detalle Película</h1>
+
+id: @ViewBag.pelicula.IdPelicula
+
+<script>alert(@ViewBag.modo);</script>
+<form method="post" action="/Administracion/AgregarEditarPelicula">
+    <div class="modal-body">
+        <div class="form-group">
+            <label>ID:</label>
+            <input id="id" type="text" class="form-control" name="id" value="@ViewBag.pelicula.IdPelicula" readonly/>
+        </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            <input id="nombre" type="text" class="form-control" name="nombre" value="@ViewBag.pelicula.Nombre"/>
+        </div>
+        <div class="form-group">
+            <label>Descripción:</label>
+            <input id="descripcion" type="text" class="form-control" name="descripcion"  value='@ViewBag.pelicula.Descripcion'/>
+        </div>
+        <div class="form-group">
+            <label>Calificación:</label>
+            <select id="genero" name="genero">
+                @foreach (var genero in ViewBag.generos)
+                {
+                    if (Convert.ToInt32(genero.IdGenero) == Convert.ToInt32(ViewBag.pelicula.IdGenero)) {
+                        <option value="@genero.IdGenero" selected="selected">@genero.Nombre</option>
+                    }
+                    else
+                    {
+                        <option value="@genero.IdGenero">@genero.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Género:</label>
+            <select id="calificacion" name="calificacion">
+                @foreach (var calificacion in ViewBag.calificaciones)
+                {
+                    if (Convert.ToInt32(calificacion.IdCalificacion) == Convert.ToInt32(ViewBag.pelicula.IdCalificacion))
+                    {
+                        <option value="@calificacion.IdCalificacion" selected="selected">@calificacion.Nombre</option>
+                    }
+                    else
+                    {
+                        <option value="@calificacion.IdCalificacion">@calificacion.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Imágen:</label>
+            <!--<input id="File1" type="file" class="form-control" name="imagen" />-->
+            <input id="imagen" type="file" name="imagen" onchange="previewFile()">
+            <img src="data:image/png;base64,@ViewBag.pelicula.Imagen" height="200" alt="" id="imgframe">
+        </div>
+        <div class="form-group">
+            <label>Duración:</label>
+            <input id="duracion" type="text" class="form-control" name="duracion" value="@ViewBag.pelicula.Duracion"/>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="agregar" type="submit" class="btn btn-default">Agregar</button>
+    </div>
+    <input type="hidden" value="" id="img_64" name="img_64" />
+</form>
+<script>
+    var modo = '@ViewBag.modo';
+    
+    window.onload = function () {
+        if (modo == "ver") {
+            document.getElementById('nombre').disabled = true;
+            document.getElementById('calificacion').disabled = true;
+            document.getElementById('genero').disabled = true;
+            document.getElementById('imagen').disabled = true;
+            document.getElementById('descripcion').disabled = true;
+            document.getElementById('duracion').disabled = true;
+            document.getElementById('agregar').style.visibility = 'hidden';
+        } else {
+            $("#agregar").text('Editar');
+        }
+    };
+</script>
