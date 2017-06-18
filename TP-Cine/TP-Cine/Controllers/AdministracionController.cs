@@ -57,6 +57,22 @@ namespace TP_Cine.Controllers
 
         }
 
+        //Reporte de Reservas
+        public ActionResult Reportes()
+        {
+            CN.listarReservas();
+
+            return View(CN.listaReservasNegocio);
+        }
+
+        [HttpPost]
+        public ActionResult FiltrarReportes(FormCollection form)
+        {
+            CN.listarReservas(form["fechaInicio"], form["fechaFin"]);
+
+            return View("Reportes", CN.listaReservasNegocio);
+        }
+
         //
         public ActionResult Peliculas()
         {
@@ -71,11 +87,6 @@ namespace TP_Cine.Controllers
             return View(carteleras.ToList());
         }
         
-
-        public ActionResult Reportes()
-        {
-            return View();
-        }
 
         //Agregar pelicula nueva
         [HttpPost]

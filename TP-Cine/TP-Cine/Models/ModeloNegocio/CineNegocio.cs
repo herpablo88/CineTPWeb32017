@@ -9,10 +9,11 @@ namespace TP_Cine.Models.ModeloNegocio
     public class CineNegocio
     {
         public List<Sedes> listaSedes = new List<Sedes>();
+        public List<ReservasNegocio> listaReservasNegocio = new List<ReservasNegocio>(); //Para Reporte de Reservas
+        public List<Reservas> listaReservas = new List<Reservas>();
 
 
-        //Trar datos de la BD para que los utilice el Controller
-       
+               
         //Gestion de Sedes
         
         public void agregarSede(string nombre, string direccion, decimal precio)
@@ -69,7 +70,49 @@ namespace TP_Cine.Models.ModeloNegocio
             ctx.SaveChanges();
         }
         
+        //Gestión de Reservas
+        public void listarReservas()
+        {
+            Entities ctx = new Entities();
 
+            List<ReservasNegocio> listaReservas = (from Reservas r in ctx.Reservas join Sedes s in ctx.Sedes on r.IdSede equals s.IdSede 
+                                   join Versiones v in ctx.Versiones on r.IdVersion equals v.IdVersion 
+                                    join Peliculas p in ctx.Peliculas on r.IdPelicula equals p.IdPelicula 
+                              select  new ReservasNegocio()
+                              {   Reserva = r.IdReserva,
+                                  Sede = s.Nombre,
+                                  Version = v.Nombre,
+                                  Pelicula = p.Nombre,
+                                  Precio = s.PrecioGeneral
+                              }).ToList();
+             
+            this.listaReservasNegocio = listaReservas;
+        }
+
+        public void listarReservas(string fechaInicio, string fechaFin)
+        {
+            Entities ctx = new Entities();
+
+            DateTime fInicio = Convert.ToDateTime(fechaInicio);
+            DateTime fFin = Convert.ToDateTime(fechaFin);
+
+
+            List<ReservasNegocio> listaReservas = (from Reservas r in ctx.Reservas
+                                                   join Sedes s in ctx.Sedes on r.IdSede equals s.IdSede
+                                                   join Versiones v in ctx.Versiones on r.IdVersion equals v.IdVersion
+                                                   join Peliculas p in ctx.Peliculas on r.IdPelicula equals p.IdPelicula
+                                                   where fInicio <= r.FechaHoraInicio && r.FechaHoraInicio <= fFin
+                                                   select new ReservasNegocio()
+                                                   {
+                                                       Reserva = r.IdReserva,
+                                                       Sede = s.Nombre,
+                                                       Version = v.Nombre,
+                                                       Pelicula = p.Nombre,
+                                                       Precio = s.PrecioGeneral
+                                                   }).ToList();
+
+            this.listaReservasNegocio = listaReservas;
+        }
             
     }
 }

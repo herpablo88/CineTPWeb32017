@@ -153,6 +153,7 @@
     <Compile Include="Models\Carteleras.cs" />
     <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\ModeloNegocio\CineNegocio.cs" />
+    <Compile Include="Models\ModeloNegocio\ReservasNegocio.cs" />
     <Compile Include="Models\Peliculas.cs" />
     <Compile Include="Models\Reservas.cs" />
     <Compile Include="Models\Sedes.cs" />
