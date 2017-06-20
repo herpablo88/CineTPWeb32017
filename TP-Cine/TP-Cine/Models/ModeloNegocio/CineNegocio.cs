@@ -10,8 +10,9 @@ namespace TP_Cine.Models.ModeloNegocio
     {
         public List<Sedes> listaSedes = new List<Sedes>();
         public List<ReservasNegocio> listaReservasNegocio = new List<ReservasNegocio>(); //Para Reporte de Reservas
-        public List<Reservas> listaReservas = new List<Reservas>();
-
+        public List<PeliculasNegocio> listaPeliculasNegocio = new List<PeliculasNegocio>(); //Para mostrar en Inicio
+        public List<Versiones> listaVersiones = new List<Versiones>();
+        public List<TiposDocumentos> listaTiposDoc = new List<TiposDocumentos>();
 
                
         //Gestion de Sedes
@@ -95,8 +96,7 @@ namespace TP_Cine.Models.ModeloNegocio
 
             DateTime fInicio = Convert.ToDateTime(fechaInicio);
             DateTime fFin = Convert.ToDateTime(fechaFin);
-
-
+            
             List<ReservasNegocio> listaReservas = (from Reservas r in ctx.Reservas
                                                    join Sedes s in ctx.Sedes on r.IdSede equals s.IdSede
                                                    join Versiones v in ctx.Versiones on r.IdVersion equals v.IdVersion
@@ -114,5 +114,106 @@ namespace TP_Cine.Models.ModeloNegocio
             this.listaReservasNegocio = listaReservas;
         }
             
+
+        //Películas Negocio
+        public void listarPeliculasNegocio()
+        {
+            Entities ctx = new Entities();
+
+            List<PeliculasNegocio> listaPeliculas = (from Peliculas p in ctx.Peliculas
+                                                     join Calificaciones c in ctx.Calificaciones on p.IdCalificacion equals c.IdCalificacion
+                                                     join Generos g in ctx.Generos on p.IdGenero equals g.IdGenero
+                                                     select new PeliculasNegocio()
+                                                     {
+                                                         Id = p.IdPelicula,
+                                                         Nombre = p.Nombre,
+                                                         Sinopsis = p.Descripcion,
+                                                         Calificacion = c.Nombre,
+                                                         Genero = g.Nombre,
+                                                         Duracion = p.Duracion,
+                                                         Imagen = p.Imagen
+                                                     }).ToList();
+
+            this.listaPeliculasNegocio = listaPeliculas;
+        }
+
+        public PeliculasNegocio obtenerPeliculaNegocio(int id)
+        {
+            Entities ctx = new Entities();
+
+            PeliculasNegocio pelicula = (from Peliculas p in ctx.Peliculas
+                                                     join Calificaciones c in ctx.Calificaciones on p.IdCalificacion equals c.IdCalificacion
+                                                     join Generos g in ctx.Generos on p.IdGenero equals g.IdGenero
+                                                     where p.IdPelicula == id
+                                                     select new PeliculasNegocio()
+                                                     {
+                                                         Id = p.IdPelicula,
+                                                         Nombre = p.Nombre,
+                                                         Sinopsis = p.Descripcion,
+                                                         Calificacion = c.Nombre,
+                                                         Genero = g.Nombre,
+                                                         Duracion = p.Duracion,
+                                                         Imagen = p.Imagen
+                                                     }).First();
+
+            return pelicula;
+        }
+
+        public void listarVersiones()
+        {
+            Entities ctx = new Entities();
+
+            var listaVersiones = (from Versiones in ctx.Versiones
+                              select Versiones).ToList();
+
+            this.listaVersiones = (List<Versiones>)listaVersiones;
+        }
+
+        public void listarTipoDocumentos()
+        {
+            Entities ctx = new Entities();
+
+            var listaTipos = (from TiposDocumentos in ctx.TiposDocumentos
+                                  select TiposDocumentos).ToList();
+
+            this.listaTiposDoc = (List<TiposDocumentos>)listaTipos;
+        }
+
+        public Peliculas obtenerPelicula (int id)
+        {
+            Entities ctx = new Entities();
+
+            Peliculas pelicula = (from Peliculas in ctx.Peliculas
+                                  where Peliculas.IdPelicula == id
+                                  select Peliculas).First();
+
+            return pelicula;
+        }
+
+        public void prepararParaReserva()
+        {
+            this.listarSedes();
+            this.listarVersiones();
+            this.listarTipoDocumentos();
+        }
+
+        public void reservar(int sede, int version, int pelicula, string fhInicio, string email, int tipoDoc, string nroDoc, int cantEntradas, string fchCarga)
+        {
+            Entities ctx = new Entities();
+            Reservas reserva = new Reservas();
+
+            reserva.IdSede = sede;
+            reserva.IdVersion = version;
+            reserva.IdPelicula = pelicula;
+            reserva.FechaHoraInicio = Convert.ToDateTime(fhInicio);
+            reserva.Email = email;
+            reserva.IdTipoDocumento = tipoDoc;
+            reserva.NumeroDocumento = nroDoc;
+            reserva.CantidadEntradas = cantEntradas;
+            reserva.FechaCarga = DateTime.Now;
+
+            ctx.Reservas.Add(reserva);
+            ctx.SaveChanges();
+        }
     }
 }

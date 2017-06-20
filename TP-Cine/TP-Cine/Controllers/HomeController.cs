@@ -4,17 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TP_Cine.Models.ModeloNegocio;
 
 namespace TP_Cine.Controllers
 {
     public class HomeController : Controller
     {
+        CineNegocio CN = new CineNegocio(); //Lo creamos acá y lo usamos en todas las acciones
+
         //
         // GET: /Home/
         public ActionResult Inicio()
         {
-            return View();
+            CN.listarPeliculasNegocio();
+
+            return View(CN.listaPeliculasNegocio);
         }
+
 
         public ActionResult Login(string returnUrl)
         {
