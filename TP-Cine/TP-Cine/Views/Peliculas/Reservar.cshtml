@@ -1,0 +1,18 @@
+﻿@using TP_Cine.Models.ModeloNegocio
+@model PeliculasNegocio
+
+<div class="row">
+    <div class="col-sm-9 col-sm-offset-1">
+        <div class="col-sm-3">
+            <img src="@Model.Imagen" alt="@Model.Nombre" />
+        </div>
+        <div class="col-sm-6">
+            <h3>@Model.Nombre</h3>
+            <h4>Se ha realizado una reserva para esta película</h4> <br />
+            <span> Nro. Documento: @ViewBag.info["NumeroDocumento"] </span>   <br />
+            <span> Cantidad de Entradas: @ViewBag.info["CantidadEntradas"] </span> <br />
+            <span> Fecha: @ViewBag.info["FechaHoraInicio"]</span>  <br /><br/>
+            <a href="~/Home/Inicio"><button class="btn btn-default">Regresar</button></a>
+        </div>
+    </div>
+</div>

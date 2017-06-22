@@ -1,5 +1,81 @@
-﻿@{
-    ViewBag.Title = "Reserva";
-}
+﻿@using TP_Cine
+@model Reservas
 
-<h1>Reserva</h1>
+<h2>Reservar entradas</h2>
+
+<div class="row">
+    
+    <div class="col-sm-offset-1">
+        <h3>@ViewBag.Pelicula.Nombre</h3>
+    </div>
+    <div class="col-sm-9">
+        @using (Html.BeginForm("Reservar", "Peliculas", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdSede, "Sede", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("IdSede", new SelectList(ViewBag.Sedes, "IdSede", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdVersion, "Versión", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.DropDownList("IdVersion", new SelectList(ViewBag.Versiones, "IdVersion", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaHoraInicio, "Fecha y Hora", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => model.FechaHoraInicio, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.IdPelicula, new { @Value = @ViewBag.Pelicula.IdPelicula })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdTipoDocumento, "Tipo Documento", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-9">
+                            @Html.DropDownList("IdTipoDocumento", new SelectList(ViewBag.TiposDoc, "IdTipoDocumento", "Descripcion"), htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumeroDocumento, "Nro. Documento", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.NumeroDocumento, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CantidadEntradas, "Cantidad de Entradas", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => model.CantidadEntradas, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.FechaCarga, new { @Value = DateTime.Today})
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Reservar" class="btn btn-success" />
+                        </div>
+                    </div>
+
+                </div>
+        }
+    </div>
+</div>

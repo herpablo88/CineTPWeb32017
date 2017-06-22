@@ -1,0 +1,19 @@
+﻿@using TP_Cine.Models.ModeloNegocio
+@model PeliculasNegocio
+
+<div class="row">
+    <div class="col-sm-9 col-sm-offset-1">
+        <div class="col-sm-3">
+            <img src="@Model.Imagen" alt="@Model.Nombre" />
+        </div>
+        <div class="col-sm-6">
+            <h3>@Model.Nombre</h3>
+            <span>@Model.Sinopsis</span> <br /><br />
+            <span> Género: @Model.Genero </span> <br />
+            <span> Calificación: @Model.Calificacion</span>  <br />
+            <span> Duracion: @Model.Duracion </span>   <br />
+            @Ajax.ActionLink("Reservar", "../Peliculas/Reserva", new { Id = @Model.Id },
+                                     new AjaxOptions() { HttpMethod = "GET" }, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</div>

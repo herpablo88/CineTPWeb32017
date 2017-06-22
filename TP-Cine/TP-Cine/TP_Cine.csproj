@@ -153,6 +153,9 @@
     <Compile Include="Models\Calificaciones.cs" />
     <Compile Include="Models\Carteleras.cs" />
     <Compile Include="Models\Generos.cs" />
+    <Compile Include="Models\ModeloNegocio\CineNegocio.cs" />
+    <Compile Include="Models\ModeloNegocio\PeliculasNegocio.cs" />
+    <Compile Include="Models\ModeloNegocio\ReservasNegocio.cs" />
     <Compile Include="Models\Peliculas.cs" />
     <Compile Include="Models\Reservas.cs" />
     <Compile Include="Models\Sedes.cs" />
@@ -186,8 +189,19 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\estilos.css" />
     <Content Include="Global.asax" />
+    <Content Include="imagenes\aplicacion_siniestra.jpg" />
+    <Content Include="imagenes\baywatch.jpg" />
+    <Content Include="imagenes\dulces_suenos.jpg" />
+    <Content Include="imagenes\el_bar.jpg" />
+    <Content Include="imagenes\el_mago_de_oz.jpg" />
+    <Content Include="imagenes\el_poder_de_la_ambicion.jpg" />
+    <Content Include="imagenes\koe_no_katachi.jpg" />
+    <Content Include="imagenes\la_momia.jpg" />
+    <Content Include="imagenes\todo_todo.jpg" />
+    <Content Include="imagenes\una_ciguena_en_apuros.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -281,6 +295,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Administracion\VerEditarPelicula.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Administracion\Sedes_Modificar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Peliculas\PeliculaDetalles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Peliculas\Reservar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

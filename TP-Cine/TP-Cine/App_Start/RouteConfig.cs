@@ -15,10 +15,10 @@ namespace TP_Cine
 
             routes.MapRoute(
                 name: "Home",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Inicio"}
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Inicio", id = UrlParameter.Optional}
             );
-
+            
             routes.MapRoute(
                 name: "Peliculas",
                 url: "{controller}/{action}/{id}",
@@ -30,7 +30,6 @@ namespace TP_Cine
                 url: "{controller}/{action}/{id}/{accion}",
                 defaults: new { controller = "Administracion", action = "Inicio", id = UrlParameter.Optional , accion = UrlParameter.Optional }
             );
-
 
             routes.MapRoute(
                 name: "Default",

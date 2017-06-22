@@ -4,21 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TP_Cine.Models.ModeloNegocio;
 
 namespace TP_Cine.Controllers
 {
     public class HomeController : Controller
     {
+        CineNegocio CN = new CineNegocio(); //Lo creamos acá y lo usamos en todas las acciones
+
         //
         // GET: /Home/
         public ActionResult Inicio()
         {
-            return View();
+            CN.listarPeliculasNegocio();
+
+            return View(CN.listaPeliculasNegocio);
         }
+
 
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.ReturnUrl = returnUrl; //Esto me tira ArgumentException si pongo mal los datos y lo vuelvo a intentar
+            Session["url"] = returnUrl; //Con esto funciona
             return View();
         }
 
@@ -35,7 +42,9 @@ namespace TP_Cine.Controllers
                 if (c>0)
                 {  // encontro cuenta de usuario
                     Session["administrador"]=1;
-                    return Redirect(returnUrl);
+                    //return Redirect(returnUrl);  //Esto me tira ArgumentException si pongo mal los datos y lo vuelvo a intentar
+                    return Redirect(Session["url"].ToString()); //Con esto funciona
+
                 }
                 else
                 {

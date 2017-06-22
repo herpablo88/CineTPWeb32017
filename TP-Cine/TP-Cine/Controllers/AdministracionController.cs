@@ -6,86 +6,80 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TP_Cine.Models.ModeloNegocio;
 
 
 namespace TP_Cine.Controllers
 {
     public class AdministracionController : Controller
     {
+        CineNegocio CN = new CineNegocio(); //Si lo creamos aca no es necesario agregarlo en todas las acciones
+       
         //
         // GET: /Administracion/
 
         public ActionResult Inicio()
         {
-            Entities ctx = new Entities();
-            var generos = (from Generos in ctx.Generos
-                           select Generos);
-            if (generos.Count() == 0)
-            {
-                Generos g1 = new Generos();
-                Generos g2 = new Generos();
-                Generos g3 = new Generos();
-
-                g1.Nombre = "Terror";
-                g2.Nombre = "Thriller";
-                g3.Nombre = "Acción";
-
-                ctx.Generos.Add(g1);
-                ctx.Generos.Add(g2);
-                ctx.Generos.Add(g3);
-            }
-
-            var calificaciones = (from Calificaciones in ctx.Calificaciones
-                                  select Calificaciones);
-            if (calificaciones.Count() == 0)
-            {
-                Calificaciones c1 = new Calificaciones();
-                Calificaciones c2 = new Calificaciones();
-                Calificaciones c3 = new Calificaciones();
-
-                c1.Nombre = "ATP";
-                c2.Nombre = "mayores de 13";
-                c3.Nombre = "mayores de 13 con reservas";
-
-                ctx.Calificaciones.Add(c1);
-                ctx.Calificaciones.Add(c2);
-                ctx.Calificaciones.Add(c3);
-            }
-
-            ctx.SaveChanges();
-
+            
             return View();
         }
 
-        public ActionResult Peliculas()
-        {
-            //Se cargan las categorias y generos
-            Entities ctx = new Entities();
-            List<Generos> generos_form = ctx.Generos.ToList();
-            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
-            List<Peliculas> peliculas_form = ctx.Peliculas.ToList();
-            ViewBag.generos = generos_form;
-            ViewBag.calificaciones = calificaciones_form;
-            ViewBag.peliculas = peliculas_form;
-
-            return View();
-        }
-
+        //Gestión de Sedes
         public ActionResult Sedes()
         {
-            List<Sedes> todasSedes = new List<Sedes>();
+            CN.listarSedes();
 
-            Entities ctx = new Entities();
+            return View(CN.listaSedes);
+        }
 
-            var listaSedes = (from sedes in ctx.Sedes
-                              select sedes).ToList();
+        [HttpPost]
+        public ActionResult AgregarSede(FormCollection form)
+        {
+            CN.agregarSede(form["nombre"],form["direccion"],Convert.ToDecimal(form["precioGeneral"]));
+            
+            return RedirectToAction("Sedes");
+        }
 
-            todasSedes = (List<Sedes>)listaSedes;
+        public ActionResult Sedes_Modificar(int id)
+        {
+            Sedes sede = new Sedes();
 
-            return View(todasSedes);
+            sede = CN.obtenerSede(id);
+
+            return View(sede);
+        }
+
+        public ActionResult ModificaSede(FormCollection form)
+        {
+            CN.modificarSede(int.Parse(form["IdSede"]), form["Nombre"], form["Direccion"], Convert.ToDecimal(form["PrecioGeneral"]));
+
+            return RedirectToAction("Sedes");
+
+        }
+
+        //Reporte de Reservas
+        public ActionResult Reportes()
+        {
+            CN.listarReservas();
+
+            return View(CN.listaReservasNegocio);
+        }
+
+        [HttpPost]
+        public ActionResult FiltrarReportes(FormCollection form)
+        {
+            CN.listarReservas(form["fechaInicio"], form["fechaFin"]);
+
+            return View("Reportes", CN.listaReservasNegocio);
+        }
+
+        //
+        public ActionResult Peliculas()
+        {
             return View();
         }
 
+        
         public ActionResult Carteleras()
         {  
             Entities db = new Entities();
@@ -94,12 +88,7 @@ namespace TP_Cine.Controllers
         }
         
 
-        public ActionResult Reportes()
-        {
-            return View();
-        }
-
-        //Agregar pelicula nueva
+ //Agregar pelicula nueva
         [HttpPost]
         public ActionResult AgregarEditarPelicula(FormCollection form)
         {
@@ -146,25 +135,9 @@ namespace TP_Cine.Controllers
             ViewBag.calificaciones = calificaciones_form;
 
             return View();
-        }
-        //Agregar sede nueva
-        [HttpPost]
-        public ActionResult AgregarSede(FormCollection form)
-        {
-            Entities ctx = new Entities();
-            Sedes sede = new Sedes();
+		}
 
-            sede.Nombre = form["nombre"];
-            sede.Direccion = form["direccion"];
-            sede.PrecioGeneral = Convert.ToDecimal(form["precioGeneral"]);
-
-            ctx.Sedes.Add(sede);
-            ctx.SaveChanges();
-
-            //return View("Sedes");
-            return RedirectToAction("Sedes");
-        }
-
+        
         //Agregar cartelera nueva
         public ActionResult AgregarCartelera()
         {
