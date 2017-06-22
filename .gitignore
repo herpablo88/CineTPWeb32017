@@ -200,3 +200,7 @@ ModelManifest.xml
 */TP-Cine/TP_Cine.csproj.user
 */TP-Cine/TP_Cine.csproj
 */Debug/*
+*TP-Cine/TP-Cine/Web.config
+*TP-Cine/TP-Cine/bin/TP_Cine.dll
+*TP-Cine/TP-Cine/bin/TP_Cine.dll.config
+*TP-Cine/TP-Cine/bin/TP_Cine.pdb

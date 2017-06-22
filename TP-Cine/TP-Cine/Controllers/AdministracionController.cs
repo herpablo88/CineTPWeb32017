@@ -76,10 +76,19 @@ namespace TP_Cine.Controllers
         //
         public ActionResult Peliculas()
         {
+            //Se cargan las categorias y generos
+            Entities ctx = new Entities();
+            List<Generos> generos_form = ctx.Generos.ToList();
+            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
+            List<Peliculas> peliculas_form = ctx.Peliculas.ToList();
+            ViewBag.generos = generos_form;
+            ViewBag.calificaciones = calificaciones_form;
+            ViewBag.peliculas = peliculas_form;
+
             return View();
         }
 
-        
+
         public ActionResult Carteleras()
         {  
             Entities db = new Entities();
