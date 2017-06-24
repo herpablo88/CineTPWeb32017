@@ -20,13 +20,13 @@ namespace TP_Cine.Controllers
 
             return View(pelicula);
         }
-        
+
         public ActionResult Reserva(int id)
         {
-            CN.prepararParaReserva();
+            CN.prepararParaReserva(id);
 
             ViewBag.Pelicula = CN.obtenerPelicula(id);
-            ViewBag.Sedes = CN.listaSedes;
+            ViewBag.Sedes = CN.listarSedesProyectaPelicula(id);
             ViewBag.Versiones = CN.listaVersiones;
             ViewBag.TiposDoc = CN.listaTiposDoc;
 
@@ -46,7 +46,6 @@ namespace TP_Cine.Controllers
             return View(pelicula);
         }
 
-       
       
     }
 }
