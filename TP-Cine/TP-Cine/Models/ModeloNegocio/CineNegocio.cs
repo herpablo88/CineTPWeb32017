@@ -97,6 +97,7 @@ namespace TP_Cine.Models.ModeloNegocio
                                                    join Sedes s in ctx.Sedes on r.IdSede equals s.IdSede
                                                    join Versiones v in ctx.Versiones on r.IdVersion equals v.IdVersion
                                                    join Peliculas p in ctx.Peliculas on r.IdPelicula equals p.IdPelicula
+                                                   join TiposDocumentos d in ctx.TiposDocumentos on r.IdTipoDocumento equals d.IdTipoDocumento
                                                    where fInicio <= r.FechaHoraInicio && r.FechaHoraInicio <= fFin
                                                    select new ReservasNegocio()
                                                    {
@@ -104,7 +105,9 @@ namespace TP_Cine.Models.ModeloNegocio
                                                        Sede = s.Nombre,
                                                        Version = v.Nombre,
                                                        Pelicula = p.Nombre,
-                                                       Precio = s.PrecioGeneral
+                                                       Precio = s.PrecioGeneral,
+                                                       ReservadoPor = d.Descripcion + ": " + r.NumeroDocumento,
+                                                       Fecha = r.FechaCarga
                                                    }).ToList();
 
             this.listaReservasNegocio = listaReservas;
