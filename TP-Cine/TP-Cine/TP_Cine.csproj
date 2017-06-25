@@ -158,6 +158,7 @@
     <Compile Include="Models\ModeloNegocio\GenerosNegocio.cs" />
     <Compile Include="Models\ModeloNegocio\PeliculasNegocio.cs" />
     <Compile Include="Models\ModeloNegocio\ReservasNegocio.cs" />
+    <Compile Include="Models\PeliculaMetadata.cs" />
     <Compile Include="Models\Peliculas.cs" />
     <Compile Include="Models\PeliculaVerEditar.cs" />
     <Compile Include="Models\Reservas.cs" />
