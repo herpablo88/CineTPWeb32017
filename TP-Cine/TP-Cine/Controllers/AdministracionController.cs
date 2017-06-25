@@ -53,7 +53,7 @@ namespace TP_Cine.Controllers
         public ActionResult ModificaSede(FormCollection form)
         {
             CN.modificarSede(int.Parse(form["IdSede"]), form["Nombre"], form["Direccion"], Convert.ToDecimal(form["PrecioGeneral"]));
-
+            
             return RedirectToAction("Sedes");
 
         }

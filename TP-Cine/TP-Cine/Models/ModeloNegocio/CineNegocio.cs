@@ -159,6 +159,7 @@ namespace TP_Cine.Models.ModeloNegocio
             return pelicula;
         }
 
+       
         public void listarVersiones()
         {
             Entities ctx = new Entities();
@@ -189,14 +190,10 @@ namespace TP_Cine.Models.ModeloNegocio
 
             return pelicula;
         }
+        
 
-        public void prepararParaReserva()
-        {
-            this.listarSedes();
-            this.listarVersiones();
-            this.listarTipoDocumentos();
-        }
-
+        //Reservar Película
+      
         public void reservar(int sede, int version, int pelicula, string fhInicio, string email, int tipoDoc, string nroDoc, int cantEntradas, string fchCarga)
         {
             Entities ctx = new Entities();
@@ -215,5 +212,40 @@ namespace TP_Cine.Models.ModeloNegocio
             ctx.Reservas.Add(reserva);
             ctx.SaveChanges();
         }
+
+        
+        public void prepararParaReserva(int id)
+        {
+            this.listarSedesProyectaPelicula(id);
+            this.listarVersiones();
+            this.listarTipoDocumentos();
+        }
+
+        public List<Sedes> listarSedesProyectaPelicula(int id)
+        {
+            Entities ctx = new Entities();
+
+            List<Sedes> listaSedes = ((from Sedes s in ctx.Sedes
+                                       join Carteleras c in ctx.Carteleras on s.IdSede equals c.IdSede
+                                       where c.IdPelicula == id
+                                       select s).Distinct()).ToList();
+
+            return listaSedes;
+        }
+
+        public List<Versiones> listarVersionesProyectaPelicula(int idPelicula, int idSede)
+        {
+            Entities ctx = new Entities();
+
+            List<Versiones> versiones = (from Versiones v in ctx.Versiones 
+                                         join Carteleras c in ctx.Carteleras on v.IdVersion equals c.IdVersion
+                                          join Sedes s in ctx.Sedes on c.IdSede equals s.IdSede
+                                         where c.IdPelicula == idPelicula && c.IdSede == idSede
+                                         select v).ToList();
+
+            return versiones;
+        }
     }
 }
+
+

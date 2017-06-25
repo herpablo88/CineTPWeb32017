@@ -17,14 +17,14 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.IdSede, "Sede", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.IdSede, "Sede", htmlAttributes: new { @class = "control-label col-md-2" , @id = "cmbSedeReserva"})
                     <div class="col-md-9">
                         @Html.DropDownList("IdSede", new SelectList(ViewBag.Sedes, "IdSede", "Nombre"), htmlAttributes: new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.IdVersion, "Versión", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.IdVersion, "Versión", htmlAttributes: new { @class = "control-label col-md-2" , @id = "cmbVersionReserva"})
                     <div class="col-md-9">
                         @Html.DropDownList("IdVersion", new SelectList(ViewBag.Versiones, "IdVersion", "Nombre"), htmlAttributes: new { @class = "form-control" })
                     </div>
