@@ -23,12 +23,10 @@ namespace TP_Cine.Controllers
 
         public ActionResult Reserva(int id)
         {
-            CN.prepararParaReserva(id);
-
             ViewBag.Pelicula = CN.obtenerPelicula(id);
-            ViewBag.Sedes = CN.listarSedesProyectaPelicula(id);
-            ViewBag.Versiones = CN.listaVersiones;
-            ViewBag.TiposDoc = CN.listaTiposDoc;
+            ViewBag.Versiones = CN.listarVersionesProyectaPelicula(id);
+            ViewBag.TiposDoc = CN.listarTipoDocumentos();
+            Session["PeliculaElegida"] = id;
 
             return View();
         }
@@ -46,6 +44,21 @@ namespace TP_Cine.Controllers
             return View(pelicula);
         }
 
-      
+        //Metodo para filtrar las sedes
+        public JsonResult obtenerSedeReserva(string id)
+        {
+            int version = int.Parse(id);
+            int pelicula = int.Parse(Session["PeliculaElegida"].ToString());
+
+            List<Sedes> sedesPorVersion = CN.listarSedesProyectaPelicula(pelicula, version);
+            List<SelectListItem> sedes = new List<SelectListItem>();
+            foreach (Sedes s in sedesPorVersion)
+            {
+                sedes.Add(new SelectListItem { Text = @s.Nombre, Value = @s.IdSede.ToString() });
+            }
+
+            return Json(new SelectList(sedes, "Value", "Text"));
+        }
+
     }
 }

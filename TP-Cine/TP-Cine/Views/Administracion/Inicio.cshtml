@@ -7,3 +7,34 @@
 
 <h1>Administración</h1>
 
+<div class="row">
+    <div class="col-sm-9 col-sm-offset-2">
+        
+        @if (Session["administrador"] != null)
+        {
+            <h3>Bienvenido al sitio de Administración</h3>
+            <span>Desde aquí podrá realizar las tareas de: </span><br />
+           
+               <ul>
+                    <li>
+                        Gestión de Películas
+                    </li>
+                    <li>
+                        Gestión de Sedes
+                    </li>
+                    <li>
+                        Gestión de Carteleras
+                    </li>
+                   <li>
+                       Gestón de Reportes de Reservas
+                   </li>
+               </ul>
+
+        }
+
+        else
+        {
+            <h3>Inicie sesión para acceder a las funciones de gestión</h3>
+        }
+    </div>
+</div>

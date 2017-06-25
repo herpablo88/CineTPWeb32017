@@ -11,8 +11,8 @@ namespace TP_Cine.Models.ModeloNegocio
         public List<Sedes> listaSedes = new List<Sedes>();
         public List<ReservasNegocio> listaReservasNegocio = new List<ReservasNegocio>(); //Para Reporte de Reservas
         public List<PeliculasNegocio> listaPeliculasNegocio = new List<PeliculasNegocio>(); //Para mostrar en Inicio
-        public List<Versiones> listaVersiones = new List<Versiones>();
-        public List<TiposDocumentos> listaTiposDoc = new List<TiposDocumentos>();
+        //public List<Versiones> listaVersiones = new List<Versiones>();
+        //public List<TiposDocumentos> listaTiposDoc = new List<TiposDocumentos>(); 
 
                
         //Gestion de Sedes
@@ -159,25 +159,25 @@ namespace TP_Cine.Models.ModeloNegocio
             return pelicula;
         }
 
-       
-        public void listarVersiones()
+
+        public List<Versiones> listarVersiones()
         {
             Entities ctx = new Entities();
 
-            var listaVersiones = (from Versiones in ctx.Versiones
-                              select Versiones).ToList();
+            List<Versiones> listaVersiones = (from Versiones in ctx.Versiones
+                                  select Versiones).ToList();
 
-            this.listaVersiones = (List<Versiones>)listaVersiones;
+            return listaVersiones;
         }
 
-        public void listarTipoDocumentos()
+        public List<TiposDocumentos> listarTipoDocumentos()
         {
             Entities ctx = new Entities();
 
-            var listaTipos = (from TiposDocumentos in ctx.TiposDocumentos
+            List<TiposDocumentos> listaTipos = (from TiposDocumentos in ctx.TiposDocumentos
                                   select TiposDocumentos).ToList();
 
-            this.listaTiposDoc = (List<TiposDocumentos>)listaTipos;
+            return listaTipos;
         }
 
         public Peliculas obtenerPelicula (int id)
@@ -214,36 +214,32 @@ namespace TP_Cine.Models.ModeloNegocio
         }
 
         
-        public void prepararParaReserva(int id)
+      
+
+        public List<Versiones> listarVersionesProyectaPelicula(int idPelicula)
         {
-            this.listarSedesProyectaPelicula(id);
-            this.listarVersiones();
-            this.listarTipoDocumentos();
+            Entities ctx = new Entities();
+
+            List<Versiones> versiones = ((from Versiones v in ctx.Versiones
+                                          join Carteleras c in ctx.Carteleras on v.IdVersion equals c.IdVersion
+                                          where c.IdPelicula == idPelicula
+                                          select v).Distinct()).ToList();
+
+            return versiones;
         }
 
-        public List<Sedes> listarSedesProyectaPelicula(int id)
+
+        public List<Sedes> listarSedesProyectaPelicula(int pelicula, int version)
         {
             Entities ctx = new Entities();
 
             List<Sedes> listaSedes = ((from Sedes s in ctx.Sedes
                                        join Carteleras c in ctx.Carteleras on s.IdSede equals c.IdSede
-                                       where c.IdPelicula == id
+                                       join Versiones v in ctx.Versiones on c.IdVersion equals v.IdVersion
+                                       where c.IdPelicula == pelicula && c.IdVersion == version
                                        select s).Distinct()).ToList();
 
             return listaSedes;
-        }
-
-        public List<Versiones> listarVersionesProyectaPelicula(int idPelicula, int idSede)
-        {
-            Entities ctx = new Entities();
-
-            List<Versiones> versiones = (from Versiones v in ctx.Versiones 
-                                         join Carteleras c in ctx.Carteleras on v.IdVersion equals c.IdVersion
-                                          join Sedes s in ctx.Sedes on c.IdSede equals s.IdSede
-                                         where c.IdPelicula == idPelicula && c.IdSede == idSede
-                                         select v).ToList();
-
-            return versiones;
         }
     }
 }

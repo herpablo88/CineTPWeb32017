@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TP_Cine.Models.ModeloNegocio;
-
+using TP_Cine.Utilities;
+using TP_Cine.Models;
 
 namespace TP_Cine.Controllers
 {
@@ -77,16 +78,11 @@ namespace TP_Cine.Controllers
         //
         public ActionResult Peliculas()
         {
-            //Se cargan las categorias y generos
-            Entities ctx = new Entities();
-            List<Generos> generos_form = ctx.Generos.ToList();
-            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
-            List<Peliculas> peliculas_form = ctx.Peliculas.ToList();
-            ViewBag.generos = generos_form;
-            ViewBag.calificaciones = calificaciones_form;
-            ViewBag.peliculas = peliculas_form;
+            PeliculasNegocio listado_peliculas = new PeliculasNegocio();
+            List<Peliculas> TodasLasPeliculas = new List<TP_Cine.Peliculas>();
+            TodasLasPeliculas = listado_peliculas.ObtenerTodas();
 
-            return View();
+            return View(TodasLasPeliculas);
         }
 
 
@@ -100,51 +96,55 @@ namespace TP_Cine.Controllers
 
         //Agregar pelicula nueva
         [HttpPost]
-        public ActionResult AgregarEditarPelicula(FormCollection form)
+        public ActionResult AgregarEditarPelicula(Peliculas pelicula,FormCollection form)
         {
             Entities ctx = new Entities();
-            Peliculas peli = new Peliculas();
-            Calificaciones calif = new Calificaciones();
-            Generos gen = new Generos();
+            PeliculasNegocio trabajar_pelicula = new PeliculasNegocio();
 
-            if (form.AllKeys.Contains("id")) {
-                peli = ctx.Peliculas.Find(Convert.ToInt32(form["id"]));
-            }
+            pelicula.Calificaciones = ctx.Calificaciones.Find(Convert.ToInt32(form["Calificaciones"]));
+            pelicula.Generos = ctx.Generos.Find(Convert.ToInt32(form["Generos"]));
 
-            peli.Nombre = form["nombre"];
-            peli.Descripcion = form["descripcion"];
-            var c = form["calificacion"];
-            peli.Calificaciones = ctx.Calificaciones.Find(Convert.ToInt32(c)); 
-            var g = form["genero"];
-            peli.Generos = ctx.Generos.Find(Convert.ToInt32(g));
-            peli.Imagen = form["imagen"];//cambiar por img_64 para base64
-            peli.Duracion = Convert.ToInt16(form["duracion"]);
-
-            if (!form.AllKeys.Contains("id"))
+            //Agregar imagen
+            if (Request.Files.Count > 0 && Request.Files[0].ContentLength > 0)
             {
-                peli.FechaCarga = DateTime.Now;
-                ctx.Peliculas.Add(peli);
+                //TODO: Agregar validacion para confirmar que el archivo es una imagen
+                string nombreSignificativo = pelicula.Nombre;
+                //Guardar Imagen
+                string pathRelativoImagen = ImagenesUtility.Guardar(Request.Files[0], nombreSignificativo);
+                pelicula.Imagen= pathRelativoImagen;
             }
-            
-            ctx.SaveChanges();
 
+            if (form["accion"] == "agregar")
+            {
+                //Agregar pelicula
+                trabajar_pelicula.AgregarPelicula(pelicula, ctx);
+            }
+            else
+            {
+                //Editar pelicula
+                trabajar_pelicula.ModificarPelicula(pelicula, ctx);
+            }
+        
             return RedirectToAction("Peliculas");
         }
 
         //Obtener datos de una pelicula
-        public ActionResult VerEditarPelicula(String id, String accion)
+        public ActionResult ABMPelicula(String id, String accion)
         {
-            Entities ctx = new Entities();
-            Peliculas peli = ctx.Peliculas.Find(Convert.ToInt32(id));
-            List<Generos> generos_form = ctx.Generos.ToList();
-            List<Calificaciones> calificaciones_form = ctx.Calificaciones.ToList();
+            VerEditarCrearPeliculaModelo modelo_vereditar = new VerEditarCrearPeliculaModelo();
+            modelo_vereditar.accion = accion;
 
-            ViewBag.pelicula = peli;
-            ViewBag.modo = accion;
-            ViewBag.generos = generos_form;
-            ViewBag.calificaciones = calificaciones_form;
-
-            return View();
+            if (accion == "agregar")
+            {
+                modelo_vereditar.pelicula.Descripcion = "";
+                modelo_vereditar.pelicula.IdGenero = 0;
+                modelo_vereditar.pelicula.IdCalificacion = 0;
+                modelo_vereditar.pelicula.Duracion = 0;
+            }else {
+                Entities ctx = new Entities();
+                modelo_vereditar.pelicula = ctx.Peliculas.Find(Convert.ToInt32(id)); 
+            }
+            return View(modelo_vereditar);
 		}
 
         

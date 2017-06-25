@@ -1,6 +1,6 @@
-﻿@{
-    ViewBag.Title = "Administracion_Peliculas";
-}
+﻿@using TP_Cine.Models;
+
+<script src="~/js/FuncionesPeliculas/PreviewFoto.js"></script>
 
 @{Html.RenderPartial("_AdministracionPartial");}
 <h1>Administración: Películas</h1>
@@ -17,13 +17,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var pelicula in ViewBag.peliculas)
+                @foreach (var pelicula in Model)
                         {
                     <tr>
                         <td>@pelicula.IdPelicula</td>
                         <td>@pelicula.Nombre</td>
-                        <td><a href="VerEditarPelicula/@pelicula.IdPelicula/ver">Ver</a></td>
-                        <td><a href="VerEditarPelicula/@pelicula.IdPelicula/editar">Modificar</a></td>
+                        <td><a href="ABMPelicula/@pelicula.IdPelicula/ver">Ver</a></td>
+                        <td><a href="ABMPelicula/@pelicula.IdPelicula/editar">Modificar</a></td>
                     </tr>
                      }
 
@@ -32,101 +32,4 @@
     </div>
 </div>
 
-<div class="row">
-    <div>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nueva Película</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form method="post" action="AgregarEditarPelicula">
-                        <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Nombre:</label>
-                                    <input id="Text1" type="text" class="form-control" name="nombre" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Descripción:</label>
-                                    <input id="Text2" type="text" class="form-control" name="descripcion" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Calificación:</label>
-                                    <select id="Select1" name="calificacion">
-                                        @foreach (var genero in ViewBag.generos)
-                                        {
-                                            <option value="@genero.IdGenero">@genero.Nombre</option>
-                                        }  
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Género:</label>
-                                    <select id="Select2" name="genero">
-                                        @foreach (var calificacion in ViewBag.calificaciones)
-                                        {
-                                            <option value="@calificacion.IdCalificacion">@calificacion.Nombre</option>
-                                        }  
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Imágen:</label>
-                                    <!--<input id="File1" type="file" class="form-control" name="imagen" />-->
-                                    <input type="file" name="imagen" onchange="previewFile()">
-                                    <img src="" height="200" alt="" id="imgframe">
-                                </div>
-                                <div class="form-group">
-                                    <label>Duración:</label>
-                                    <input id="Text3" type="text" class="form-control" name="duracion" />
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-default">Agregar</button>
-                        </div>
-                        <input type="hidden" value="" id="img_64" name="img_64" />
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<script>
-    var flag = 0;
-    function previewFile() {
-        var preview = document.querySelector('img');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
-
-        reader.addEventListener("load", function () {
-            preview.src = reader.result;
-        }, false);
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-
-        var base64 = getBase64Image(document.getElementById("imgframe"));
-        document.getElementById('img_64').value = base64;
-
-        if (flag == 0) {
-            flag = 1;
-            previewFile();
-        }
-    }
-
-    function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL("image/png");
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-    }
-</script>
+<a href="ABMPelicula/0/agregar">Nueva</a>
