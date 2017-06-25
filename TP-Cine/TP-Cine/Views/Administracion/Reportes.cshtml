@@ -28,7 +28,7 @@
 
 
 <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-10">
 
         <h3>Reporte de Reservas</h3>
                 <table class="table table-bordered table-hover">
@@ -39,6 +39,8 @@
                             <th>Versión</th>
                             <th>Película</th>
                             <th>Precio</th>
+                            <th>Reservado por</th>
+                            <th>En la fecha</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +52,9 @@
                                 <td>@r.Version </td>
                                 <td>@r.Pelicula </td>
                                 <td>@r.Precio </td>
+                                <td>@r.ReservadoPor </td>
+                                <td>@r.Fecha</td>
+
                             </tr>
                              }
                     </tbody>

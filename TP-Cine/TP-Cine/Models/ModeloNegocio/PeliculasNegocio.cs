@@ -31,13 +31,14 @@ namespace TP_Cine.Models.ModeloNegocio
 
         public void ModificarPelicula(Peliculas modificar_pelicula, Entities ctx)
         {
-            Peliculas peli = new Peliculas(); 
+            Peliculas peli = new Peliculas();
             peli = ctx.Peliculas.Find(modificar_pelicula.IdPelicula);
             peli.Nombre = modificar_pelicula.Nombre;
             peli.Descripcion = modificar_pelicula.Descripcion;
             peli.Calificaciones = modificar_pelicula.Calificaciones;
             peli.Generos = modificar_pelicula.Generos;
-            if(modificar_pelicula.Imagen != null) { 
+            if (modificar_pelicula.Imagen != null)
+            {
                 peli.Imagen = modificar_pelicula.Imagen;
             }
             peli.Duracion = modificar_pelicula.Duracion;
