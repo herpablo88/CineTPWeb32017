@@ -12,7 +12,7 @@ namespace TP_Cine.Controllers
     public class CartelerasController : Controller
     {
         private Entities db = new Entities();
-      
+        TP_Cine.Models.ModeloNegocio.CarteleraNegocio validar = new Models.ModeloNegocio.CarteleraNegocio();
         public ActionResult Index()
         {
             var carteleras = db.Carteleras.Include(c => c.Peliculas).Include(c => c.Sedes).Include(c => c.Versiones);
@@ -32,10 +32,24 @@ namespace TP_Cine.Controllers
         public ActionResult Crear([Bind(Include = "IdCartelera,IdSede,IdPelicula,HoraInicio,FechaInicio,FechaFin,NumeroSala,IdVersion,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo,FechaCarga")] Carteleras carteleras)
         {
             if (ModelState.IsValid)
-            {
-                db.Carteleras.Add(carteleras);
-                db.SaveChanges();
-                return RedirectToAction("Carteleras","Administracion");
+            {  
+                 
+               string mensaje = validar.validarCartelera(carteleras);
+               string mensajeDias = validar.validoDias(carteleras);
+               if (mensaje != null)
+               {
+                   ModelState.AddModelError("validacion", mensaje);
+                  
+               }
+               if(mensajeDias != null){
+                    ModelState.AddModelError("validacionDias", mensajeDias);
+               }
+               else
+               {
+                   validar.agregarCartelera(carteleras);
+                   validar.validoDias(carteleras);
+                   return RedirectToAction("Carteleras", "Administracion");
+               }
             }
 
             ViewBag.IdPelicula = new SelectList(db.Peliculas, "IdPelicula", "Nombre", carteleras.IdPelicula);
@@ -69,9 +83,22 @@ namespace TP_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(carteleras).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Carteleras", "Administracion");
+                string mensaje = validar.validarCateleraEdit(carteleras);
+                string mensajeDias = validar.validoDias(carteleras);
+                if (mensaje != null)
+                {
+                    ModelState.AddModelError("validacion", mensaje);
+                }
+                if (mensajeDias != null)
+                {
+                    ModelState.AddModelError("validacionDias", mensajeDias);
+                }
+                else
+                {
+                    validar.modificarCartelera(carteleras);
+                  
+                    return RedirectToAction("Carteleras", "Administracion");;
+                } 
             }
             ViewBag.IdPelicula = new SelectList(db.Peliculas, "IdPelicula", "Nombre", carteleras.IdPelicula);
             ViewBag.IdSede = new SelectList(db.Sedes, "IdSede", "Nombre", carteleras.IdSede);
@@ -98,10 +125,8 @@ namespace TP_Cine.Controllers
         [HttpPost, ActionName("Eliminar")]
     
         public ActionResult ConfirmarEliminar(int id)
-        {
-            Carteleras carteleras = db.Carteleras.Find(id);
-            db.Carteleras.Remove(carteleras);
-            db.SaveChanges();
+        {   
+            validar.eliminarCartelera(id);
             return RedirectToAction("Carteleras", "Administracion");
         }
 
