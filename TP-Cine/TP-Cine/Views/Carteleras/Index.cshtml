@@ -3,58 +3,61 @@
 @{
     ViewBag.Title = "Index";
 }
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCartelera)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdSede)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdPelicula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoraInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaFin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroSala)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdVersion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lunes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Martes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Miercoles)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Jueves)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Viernes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sabado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Domingo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCarga)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCartelera)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSede)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPelicula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroSala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVersion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lunes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Martes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Miercoles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jueves)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Viernes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sabado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domingo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCarga)
+            </th>
+            <th colspan="2">Acciones</th>
+        </tr>
+    </thead>
+
 
     @foreach (var item in Model)
     {
@@ -63,10 +66,10 @@
                 @Html.DisplayFor(modelItem => item.IdCartelera)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdSede)
+                @Html.DisplayFor(modelItem => item.Sedes.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPelicula)
+                @Html.DisplayFor(modelItem => item.Peliculas.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HoraInicio)
@@ -81,7 +84,7 @@
                 @Html.DisplayFor(modelItem => item.NumeroSala)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdVersion)
+                @Html.DisplayFor(modelItem => item.Versiones.Nombre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Lunes)
@@ -108,7 +111,9 @@
                 @Html.DisplayFor(modelItem => item.FechaCarga)
             </td>
             <td>
-                <a href="@Url.Action("Editar", "Carteleras", new { id = item.IdCartelera })"> <button type="button" class="btn btn-warning btn-xs">Editar</button> </a>
+                <a href="@Url.Action("Editar", "Carteleras", new { id = item.IdCartelera })"> <button type="button" class="btn btn-warning btn-xs">Editar</button> </a>                
+            </td>
+            <td>
                 <a href="@Url.Action("Eliminar", "Carteleras", new { id = item.IdCartelera })"> <button type="button" class="btn btn-danger btn-xs">Eliminar</button> </a>
             </td>
         </tr>

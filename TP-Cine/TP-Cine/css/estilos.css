@@ -1,3 +1,7 @@
+body{
+    background-image: linear-gradient(#5bc0de, #5bc0de);
+}
+
 .homePelicula{
     display: inline-block;
     margin-bottom: 2%;
@@ -6,6 +10,7 @@
 
 .homeImagen{
     height: 400px;
+    width: 700px;
 }
 
 .homeOpciones{

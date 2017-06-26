@@ -4,20 +4,19 @@
     
 }
 @{Html.RenderPartial("_AdministracionPartial");}
-<h1>Administración: Carteleras</h1>
-<div class="row">
-    <div class="col-sm-9">
-        <h3>Peliculas en Cartelera </h3>
-        <table class="table table-bordered table-hover">
-            @{Html.RenderPartial("~/Views/Carteleras/Index.cshtml");}
-        </table>
+<h1 class="text-center">Administración: Carteleras</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-6">
+            <h3>Peliculas en Cartelera </h3>
+            <table class="table table-bordered table-hover">
+                @{Html.RenderPartial("~/Views/Carteleras/Index.cshtml");}
+            </table>
+            <a href="@Url.Action("Crear","Carteleras")"> <button type="button" class="btn btn-default">Nueva Cartelera</button> </a>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div>
-        <a href="@Url.Action("Crear","Carteleras")"> <button type="button" class="btn btn-default">Nuevo</button> </a>
-    </div>
-</div>
+
 @*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
