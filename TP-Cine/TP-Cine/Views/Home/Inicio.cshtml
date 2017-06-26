@@ -5,19 +5,18 @@
 @using TP_Cine.Models.ModeloNegocio
 @model List<PeliculasNegocio>
 
-<h1>Home</h1>
 
 <div class="row">
-    <div class="col-sm-9 col-sm-offset-1 ">
+    <div class="col-sm-10 ">
         <h3>Pelicualas en Cartelera</h3>
         <div class="">
             @foreach (PeliculasNegocio p in Model)
             {
-                <div class="container">
+                <div class="col-sm-3 col-sm-offset-1 homePelicula">
                     <div>
-                        <img src="@p.Imagen" alt="@p.Nombre" />
+                        <img src="@p.Imagen" alt="@p.Nombre" class="homeImagen" />
                     </div>
-                    <div>
+                    <div class="homeOpciones">
                         @Ajax.ActionLink("Ver Mas", "../Peliculas/PeliculaDetalles", new { id = @p.Id },
                                  new AjaxOptions() { HttpMethod = "GET" }, new { @class = "btn btn-default" })
                         @Ajax.ActionLink("Reservar", "../Peliculas/Reserva", new { id = @p.Id },

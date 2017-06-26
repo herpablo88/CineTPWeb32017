@@ -2,11 +2,14 @@
     ViewBag.Title = "Administracion_Sedes";
 }
 
-@{Html.RenderPartial("_AdministracionPartial");}
+@{
+    Html.RenderPartial("_AdministracionPartial");
+}
 
 @using TP_Cine
 
 @model List<Sedes>
+
 <h1>Administración: Sedes</h1>
 
 <div class="row">
@@ -41,8 +44,9 @@
     </div>
 </div>
 
+<button type="button" class="btn btn-default btn-lg" ><a href="AgregarSede">Nueva Sede</a></button>
 
-<div class="row">
+@*<div class="row">
     <div>
             <button type="button" class="btn btn-default btn-lg " data-toggle="modal" data-target="#exampleModal">Nuevo</button>
         
@@ -57,9 +61,6 @@
                         </div>
                         <form method="post" action="AgregarSede">
                             <div class="modal-body">
-                                @*  @using (Html.BeginForm("AgregarSede", "Administracion", FormMethod.Post))
-                                {
-                                     Despues hacerlos con html helper *@
                                 <div class="form-group">
                                     <label>Nombre:</label>
                                     <input id="Text4" type="text" class="form-control" name="nombre" />
@@ -72,7 +73,6 @@
                                     <label>Precio Entrada General:</label>
                                     <input id="Text6" type="text" class="form-control" name="precioGeneral" />
                                 </div>
-                                @*}*@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -83,4 +83,4 @@
                 </div>
             </div>
         </div>
-</div>
+</div>*@

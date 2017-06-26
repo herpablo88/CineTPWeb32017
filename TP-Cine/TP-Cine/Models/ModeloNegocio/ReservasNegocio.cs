@@ -12,5 +12,7 @@ namespace TP_Cine.Models.ModeloNegocio
         public string Version { get; set; }
         public string Pelicula { get; set; }
         public decimal Precio { get; set; }
+        public string ReservadoPor { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

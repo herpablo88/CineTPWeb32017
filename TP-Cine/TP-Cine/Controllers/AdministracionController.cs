@@ -15,6 +15,7 @@ namespace TP_Cine.Controllers
     public class AdministracionController : Controller
     {
         CineNegocio CN = new CineNegocio(); //Si lo creamos aca no es necesario agregarlo en todas las acciones
+        Entities ctx = new Entities();
        
         //
         // GET: /Administracion/
@@ -33,13 +34,13 @@ namespace TP_Cine.Controllers
             return View(CN.listaSedes);
         }
 
-        [HttpPost]
-        public ActionResult AgregarSede(FormCollection form)
-        {
-            CN.agregarSede(form["nombre"],form["direccion"],Convert.ToDecimal(form["precioGeneral"]));
-            
-            return RedirectToAction("Sedes");
-        }
+        //[HttpPost]
+        //public ActionResult AgregarSede(FormCollection form)
+        //{
+        //    CN.agregarSede(form["nombre"], form["direccion"], Convert.ToDecimal(form["precioGeneral"]));
+
+        //    return RedirectToAction("Sedes");
+        //}
 
         public ActionResult Sedes_Modificar(int id)
         {
@@ -93,7 +94,7 @@ namespace TP_Cine.Controllers
         }
         
 
- //Agregar pelicula nueva
+        //Agregar pelicula nueva
         [HttpPost]
         public ActionResult AgregarEditarPelicula(Peliculas pelicula,FormCollection form)
         {
@@ -153,6 +154,22 @@ namespace TP_Cine.Controllers
             return View();
         }
 
-       
+        //Estos dos ActionResult son de prueba
+        public ActionResult AgregarSede()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AgregarSede(FormCollection form)
+        {
+            //if (!ModelState.IsValid)
+            //{
+                CN.agregarSede(form["Nombre"], form["Direccion"], Convert.ToDecimal(form["PrecioGeneral"]));
+                return RedirectToAction("Sedes");
+            //}
+            //return RedirectToAction("AgregarSede");
+        }
     }
 }

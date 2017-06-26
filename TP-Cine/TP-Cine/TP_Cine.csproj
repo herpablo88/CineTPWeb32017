@@ -210,6 +210,9 @@
     <Content Include="js\FuncionesPeliculas\PreviewFoto.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="js\reserva.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -312,6 +315,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Peliculas\Reservar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Administracion\AgregarSede.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

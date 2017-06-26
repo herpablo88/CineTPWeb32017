@@ -1,0 +1,15 @@
+.homePelicula{
+    display: inline-block;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.homeImagen{
+    height: 400px;
+}
+
+.homeOpciones{
+    margin-top: 1%;
+    padding-left: 15%;
+}
+   
