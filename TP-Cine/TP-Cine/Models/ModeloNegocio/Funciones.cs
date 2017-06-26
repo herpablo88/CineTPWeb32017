@@ -73,11 +73,11 @@ namespace TP_Cine.Models.ModeloNegocio
         {
             fecha = fecha.Date;
 
-            DateTime horario = new DateTime(hora, 00);
+            DateTime horario = new DateTime(fecha.Year, fecha.Month, fecha.Day, hora, 00, 00);
 
             for (int i = 1; i <= 7; i++)
             {
-                f.Add(fecha.ToShortDateString()+' '+horario.ToLongTimeString());
+                f.Add(horario.ToString());
                
                 //Despues de agregar la primer funcion indico que para el horario de la proxima sume duracion y media hora
                 horario = horario.AddMinutes(duracion + 30);
