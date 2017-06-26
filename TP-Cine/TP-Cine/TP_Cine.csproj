@@ -155,6 +155,7 @@
     <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\ModeloNegocio\CalificacionesNegocio.cs" />
     <Compile Include="Models\ModeloNegocio\CineNegocio.cs" />
+    <Compile Include="Models\ModeloNegocio\Funciones.cs" />
     <Compile Include="Models\ModeloNegocio\GenerosNegocio.cs" />
     <Compile Include="Models\ModeloNegocio\PeliculasNegocio.cs" />
     <Compile Include="Models\ModeloNegocio\ReservasNegocio.cs" />

@@ -43,7 +43,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.FechaHoraInicio, "Fecha y Hora", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-9">
-                        @Html.TextBoxFor(model => model.FechaHoraInicio, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("FechaHoraInicio", new SelectList(string.Empty, "Value", "Text"), "Seleccione Fecha", new { @class = "form-control", @id = "FechaHoraReserva" })
                         @Html.ValidationMessageFor(model => model.FechaHoraInicio, "", new { @class = "text-danger" })
                     </div>
                 </div>
