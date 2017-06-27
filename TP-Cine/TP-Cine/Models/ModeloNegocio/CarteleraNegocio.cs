@@ -23,13 +23,7 @@ namespace TP_Cine.Models.ModeloNegocio
               return "Error!,No puede existir mas de 7 funciones por sala";
            }
 
-           //verifico hora de inicio no sea anterior a las 15:00hs.
-            int horaInicio;
-            horaInicio = int.Parse(cartelera.HoraInicio.ToString().Substring(0, 2)); 
-           if (horaInicio < 15) {
-               return "La hora de inicio debe ser posterior o igual a las 15:00hs";
-           } 
-
+         
           //verifico si se ingresan datos duplicados
            if (ctx.Carteleras.Where(d => d.IdPelicula == cartelera.IdPelicula && d.IdSede == cartelera.IdSede && d.IdVersion == cartelera.IdVersion).Count() > 0)
            {
@@ -72,13 +66,7 @@ namespace TP_Cine.Models.ModeloNegocio
                 return "Error!,No puede existir mas de 7 funciones por sala";
             }
 
-            //verifico hora de inicio no sea anterior a las 15:00hs.
-            int horaInicio;
-            horaInicio = int.Parse(cartelera.HoraInicio.ToString().Substring(0, 2));
-            if (horaInicio < 15)
-            {
-                return "La hora de inicio debe ser posterior o igual a las 15:00hs";
-            }
+          
 
             //verifico si se ingresan datos duplicados
             if (ctx.Carteleras.Where(d => d.Peliculas == cartelera.Peliculas && d.IdSede == cartelera.IdSede && d.IdVersion == cartelera.IdVersion &&  d.IdVersion == cartelera.IdVersion).Count() > 0)

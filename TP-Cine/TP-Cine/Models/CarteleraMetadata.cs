@@ -18,6 +18,7 @@ namespace TP_Cine.Models
         public int IdPelicula { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
+        [Range(1500, 2400, ErrorMessage = "La hora de inicio permitida desde las 1500 hasta las 2400")]
         public int HoraInicio { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
