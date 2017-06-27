@@ -54,7 +54,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaCarga)
             </th>
-            <th colspan="2">Acciones</th>
+            <th colspan="2" class="text-center">Acciones</th>
         </tr>
     </thead>
 
@@ -111,10 +111,10 @@
                 @Html.DisplayFor(modelItem => item.FechaCarga)
             </td>
             <td>
-                <a href="@Url.Action("Editar", "Carteleras", new { id = item.IdCartelera })"> <button type="button" class="btn btn-warning btn-xs">Editar</button> </a>                
+                <a href="@Url.Action("Editar", "Carteleras", new { id = item.IdCartelera })" role="button" class="btn btn-warning btn-xs">Editar</a>                
             </td>
             <td>
-                <a href="@Url.Action("Eliminar", "Carteleras", new { id = item.IdCartelera })"> <button type="button" class="btn btn-danger btn-xs">Eliminar</button> </a>
+                <a href="@Url.Action("Eliminar", "Carteleras", new { id = item.IdCartelera })" role="button" class="btn btn-danger btn-xs">Eliminar</a>
             </td>
         </tr>
     }

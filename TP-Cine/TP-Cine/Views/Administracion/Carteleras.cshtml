@@ -7,13 +7,11 @@
 <h1 class="text-center">Administración: Carteleras</h1>
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-6">
             <h3>Peliculas en Cartelera </h3>
             <table class="table table-bordered table-hover">
                 @{Html.RenderPartial("~/Views/Carteleras/Index.cshtml");}
             </table>
-            <a href="@Url.Action("Crear","Carteleras")"> <button type="button" class="btn btn-default">Nueva Cartelera</button> </a>
-        </div>
+            <a href="@Url.Action("Crear","Carteleras")" role="button"  class="btn btn-default">Nueva Cartelera</a>
     </div>
 </div>
 
