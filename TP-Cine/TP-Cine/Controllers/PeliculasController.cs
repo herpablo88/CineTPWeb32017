@@ -57,8 +57,30 @@ namespace TP_Cine.Controllers
                 sedes.Add(new SelectListItem { Text = @s.Nombre, Value = @s.IdSede.ToString() });
             }
 
+            Session["VersionElegida"] = id;
+
             return Json(new SelectList(sedes, "Value", "Text"));
         }
 
+        //Metodo para filtrar fechas
+        public JsonResult obtenerFechaHoraReserva(string id)
+        {
+            int pelicula = int.Parse(Session["PeliculaElegida"].ToString());
+            int version = int.Parse(Session["VersionElegida"].ToString());
+            int sede = int.Parse(id);
+            
+            Funciones f = new Funciones();
+
+            List<string> funciones = f.obtenerFunciones(pelicula, version, sede); 
+
+            List<SelectListItem> fechas = new List<SelectListItem>();
+
+            foreach(string fch in funciones)
+            {
+                fechas.Add(new SelectListItem { Text = fch, Value = fch });
+            }
+
+            return Json(new SelectList(fechas, "Value", "Text"));
+        }
     }
 }

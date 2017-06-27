@@ -6,15 +6,15 @@
 @model List<PeliculasNegocio>
 
 
-<div class="row">
-    <div class="col-sm-10 ">
-        <h3>Pelicualas en Cartelera</h3>
-        <div class="">
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">Pelicualas en Cartelera</h2>
+        <div class="col-sm-12">
             @foreach (PeliculasNegocio p in Model)
             {
-                <div class="col-sm-3 col-sm-offset-1 homePelicula">
+                <div class="col-xs-6 col-md-4 homePelicula">
                     <div>
-                        <img src="@p.Imagen" alt="@p.Nombre" class="homeImagen" />
+                        <img src="@p.Imagen" alt="@p.Nombre" class="img-thumbnail" />
                     </div>
                     <div class="homeOpciones">
                         @Ajax.ActionLink("Ver Mas", "../Peliculas/PeliculaDetalles", new { id = @p.Id },
