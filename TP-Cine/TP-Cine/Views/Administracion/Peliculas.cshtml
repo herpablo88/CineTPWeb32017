@@ -3,34 +3,36 @@
 <script src="~/js/FuncionesPeliculas/PreviewFoto.js"></script>
 
 @{Html.RenderPartial("_AdministracionPartial");}
-<h1>Administración: Películas</h1>
+<h1 class="text-center">Administración: Películas</h1>
 
-<div class="row">
-    <div class="col-sm-9">
-        <h3>Películas en cartelera</h3>
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th colspan="2">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var pelicula in Model)
-                        {
+<div class="contaoner-fluid">
+    <div class="row-fluid">
+        <div class="col-md-offset-3 col-md-6">
+            <h3>Películas en cartelera</h3>
+            <table class="table table-condensed table-hover">
+                <thead>
                     <tr>
-                        <td>@pelicula.IdPelicula</td>
-                        <td>@pelicula.Nombre</td>
-                        <td><a href="ABMPelicula/@pelicula.IdPelicula/ver">Ver</a></td>
-                        <td><a href="ABMPelicula/@pelicula.IdPelicula/editar">Modificar</a></td>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th colspan="2" class="text-center">Acciones</th>
                     </tr>
-                     }
+                </thead>
+                <tbody>
+                    @foreach (var pelicula in Model)
+                            {
+                        <tr>
+                            <td>@pelicula.IdPelicula</td>
+                            <td>@pelicula.Nombre</td>
+                            <td><a href="ABMPelicula/@pelicula.IdPelicula/editar" role="button" class="btn btn-warning btn-xs">Editar</a></td>
+                            <td><a href="ABMPelicula/@pelicula.IdPelicula/ver" role="button" class="btn btn-success btn-xs">Ver</a></td>                            
+                        </tr>
+                         }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <a href="ABMPelicula/0/agregar"><button type="button" class="btn btn-default btn-lg" >Nueva Pelicula</button></a>
+        </div>
     </div>
 </div>
-
 <a href="ABMPelicula/0/agregar" class="btn btn-info" role="button">Nueva</a>
 

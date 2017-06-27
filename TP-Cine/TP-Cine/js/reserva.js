@@ -1,4 +1,5 @@
-﻿    $(document).ready(function () {
+﻿//Para cargar la lista de sedes
+$(document).ready(function () {
         //Evento change --> Seleccioné una versión 
         $("#VersionReserva").change(function () {
             $("#SedeReserva").empty();
@@ -19,4 +20,29 @@
             });
             return false;
         })
-    });
+});
+
+
+//Para cargar los horarios disponibles
+$(document).ready(function () {
+    //Evento change --> Seleccioné una sede
+    $("#SedeReserva").change(function () {
+        $("#FechaHoraReserva").empty();
+        $.ajax({
+            type: 'POST',
+            url: '../obtenerFechaHoraReserva', // llamada del método json
+            dataType: 'json',
+            data: { id: $("#SedeReserva").val() },
+            success: function (fechas) {
+                // fechas tiene la lista en formato Json que se creó en el método
+                $.each(fechas, function (i, fecha) {
+                    $("#FechaHoraReserva").append('<option value="' + fecha.Value + '">' + fecha.Text + '</option>');
+                }); // Se agregan las opciones al dropdownlist FechaHoraInicioReserva
+            },
+            error: function (ex) {
+                alert('Error al cargar fechas');
+            }
+        });
+        return false;
+    })
+});
