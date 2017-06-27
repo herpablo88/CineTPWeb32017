@@ -100,6 +100,13 @@
             }
             @Html.ValidationMessageFor(m => m.pelicula.Duracion, "", new { @class = "text-danger" })
         </div>
+        @if (Model.accion != "agregar")
+        {
+            <div class="form-group">
+                <label>Fecha de carga:</label>
+                @Html.TextBoxFor(m => m.pelicula.FechaCarga, new { @class = "form-control", @placeholder = "id", @readonly = "readonly" })
+            </div>
+        }
     </div>
     <div class="modal-footer">
         @if (Model.accion != "ver")
