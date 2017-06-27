@@ -7,47 +7,59 @@
 }
 @{Html.RenderPartial("_AdministracionPartial");}
 
-<h2>Modificar Sede</h2>
+<h1 class="text-center">Administración: Sedes</h1>
+
+
 
 @using (Html.BeginForm("ModificaSede", "Administracion", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true)
+    <div class="conytainer-fluid">
+        <div class="row-fluid">
+            <div class="col-md-offset-3 col-md-6">
+                <h3>Modificar Sede</h3>
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true)
 
-        @Html.HiddenFor(model => model.IdSede)
+                    @Html.HiddenFor(model => model.IdSede)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.Nombre, Model.Nombre)
-            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Nombre, Model.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>                        
+                    </div>
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Direccion, "Dirección", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Direccion, Model.Direccion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                        </div>                        
+                    </div>
 
-        </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PrecioGeneral, "Entrada", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                @Html.TextBoxFor(model => model.PrecioGeneral, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PrecioGeneral, "", new { @class = "text-danger" })
+                            </div>
+                        </div>                        
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Direccion, "Dirección", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.Direccion, Model.Direccion)
-            @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Modificar" class="btn btn-default btn-lg" />
+                        </div>
+                    </div>
 
-
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PrecioGeneral, "Precio Entrada Gral", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.PrecioGeneral, Model.PrecioGeneral)
-            @Html.ValidationMessageFor(model => model.PrecioGeneral, "", new { @class = "text-danger" })
-
-
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Modificar" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
     </div>
 }
-
