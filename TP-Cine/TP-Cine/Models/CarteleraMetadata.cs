@@ -20,11 +20,13 @@ namespace TP_Cine.Models
         [Required(ErrorMessage = "Campo Obligatorio")]
         [Range(15, 23, ErrorMessage = "La hora de inicio permitida desde las 15 hasta las 23")]
         public int HoraInicio { get; set; }
-
+        
         [Required(ErrorMessage = "Campo Obligatorio")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaInicio { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaFin { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
@@ -42,6 +44,7 @@ namespace TP_Cine.Models
         public bool Domingo { get; set; }
 
         [Required(ErrorMessage = "Campo Obligatorio")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaCarga { get; set; }
 
         public virtual Peliculas Peliculas { get; set; }
