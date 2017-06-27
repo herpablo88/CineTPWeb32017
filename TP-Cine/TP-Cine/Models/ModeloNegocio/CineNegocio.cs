@@ -82,7 +82,7 @@ namespace TP_Cine.Models.ModeloNegocio
                                                        Pelicula = p.Nombre,
                                                        Precio = s.PrecioGeneral,
                                                        ReservadoPor = d.Descripcion +": " + r.NumeroDocumento,
-                                                       Fecha = r.FechaCarga
+                                                       Fecha = r.FechaHoraInicio
                                                    }).ToList();
 
             this.listaReservasNegocio = listaReservas;
@@ -107,7 +107,7 @@ namespace TP_Cine.Models.ModeloNegocio
                                                        Pelicula = p.Nombre,
                                                        Precio = s.PrecioGeneral,
                                                        ReservadoPor = d.Descripcion + ": " + r.NumeroDocumento,
-                                                       Fecha = r.FechaCarga
+                                                       Fecha = r.FechaHoraInicio
                                                    }).ToList();
 
             this.listaReservasNegocio = listaReservas;
