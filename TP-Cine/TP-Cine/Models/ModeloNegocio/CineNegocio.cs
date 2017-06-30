@@ -117,9 +117,14 @@ namespace TP_Cine.Models.ModeloNegocio
         //Películas Negocio
         public void listarPeliculasNegocio()
         {
-            List<PeliculasNegocio> listaPeliculas = (from Peliculas p in ctx.Peliculas
+            DateTime hoy = DateTime.Today;
+            DateTime max = hoy.AddDays(30);
+
+            List<PeliculasNegocio> listaPeliculas = ((from Peliculas p in ctx.Peliculas
                                                      join Calificaciones c in ctx.Calificaciones on p.IdCalificacion equals c.IdCalificacion
                                                      join Generos g in ctx.Generos on p.IdGenero equals g.IdGenero
+                                                     join Carteleras ct in ctx.Carteleras on p.IdPelicula equals ct.IdPelicula
+                                                     where ct.FechaFin >= hoy && ct.FechaInicio <= max
                                                      select new PeliculasNegocio()
                                                      {
                                                          Id = p.IdPelicula,
@@ -129,7 +134,7 @@ namespace TP_Cine.Models.ModeloNegocio
                                                          Genero = g.Nombre,
                                                          Duracion = p.Duracion,
                                                          Imagen = p.Imagen
-                                                     }).ToList();
+                                                     }).Distinct()).ToList();
 
             this.listaPeliculasNegocio = listaPeliculas;
         }
@@ -201,7 +206,14 @@ namespace TP_Cine.Models.ModeloNegocio
             ctx.SaveChanges();
         }
 
+        public decimal precioTotal (int sede, int entradas)
+        {
+            decimal precio = (from Sedes s in ctx.Sedes
+                             where s.IdSede == sede
+                             select s.PrecioGeneral).First();
 
+            return precio * entradas; 
+        }
 
 
         public List<Versiones> listarVersionesProyectaPelicula(int idPelicula)

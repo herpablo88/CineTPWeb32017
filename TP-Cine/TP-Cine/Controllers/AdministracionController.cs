@@ -70,7 +70,17 @@ namespace TP_Cine.Controllers
         [HttpPost]
         public ActionResult FiltrarReportes(FormCollection form)
         {
-            CN.listarReservas(form["fechaInicio"], form["fechaFin"]);
+            TimeSpan periodo = Convert.ToDateTime(form["fechaFin"]) - Convert.ToDateTime(form["fechaInicio"]);
+
+            if(periodo.Days <= 30)
+            {
+                CN.listarReservas(form["fechaInicio"], form["fechaFin"]);
+            }
+            else
+            {
+                ViewBag.Mensaje = "El periodo consultado no puede superar los 30 días";
+                CN.listarReservas();
+            }
 
             return View("Reportes", CN.listaReservasNegocio);
         }

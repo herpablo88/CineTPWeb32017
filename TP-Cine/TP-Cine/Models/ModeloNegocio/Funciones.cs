@@ -77,7 +77,7 @@ namespace TP_Cine.Models.ModeloNegocio
 
             for (int i = 1; i <= 7; i++)
             {
-                f.Add(horario.ToString());
+                f.Add(horario.Year.ToString()+'/'+horario.Month.ToString()+'/'+horario.Day.ToString()+' '+horario.TimeOfDay.ToString());
                
                 //Despues de agregar la primer funcion indico que para el horario de la proxima sume duracion y media hora
                 horario = horario.AddMinutes(duracion + 30);

@@ -40,6 +40,7 @@ namespace TP_Cine.Controllers
 
             PeliculasNegocio pelicula = CN.obtenerPeliculaNegocio(int.Parse(form["IdPelicula"]));
             ViewBag.info = form;
+            ViewBag.precio = CN.precioTotal(int.Parse(form["IdSede"]), int.Parse(form["CantidadEntradas"]));
 
             return View(pelicula);
         }

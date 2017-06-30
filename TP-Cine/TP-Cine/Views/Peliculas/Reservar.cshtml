@@ -11,7 +11,11 @@
             <h4>Se ha realizado una reserva para esta película</h4> <br />
             <span> Nro. Documento: @ViewBag.info["NumeroDocumento"] </span>   <br />
             <span> Cantidad de Entradas: @ViewBag.info["CantidadEntradas"] </span> <br />
-            <span> Fecha: @ViewBag.info["FechaHoraInicio"]</span>  <br /><br/>
+            <span> Precio Total: $@ViewBag.precio </span> <br />
+            <span> Fecha: @ViewBag.info["FechaHoraInicio"]</span>  <br />
+            <span> Código de reserva: @ViewBag.info["IdPelicula"]-@ViewBag.info["NumeroDocumento"]-@ViewBag.info["CantidadEntradas"]</span>  <br />
+            <span> La reserva permanecerá vigente hasta 1 (una) hora antes del horario de inicio de la función.</span>  <br />
+            <span> Debe confirmar su reserva en la sucursal para la que se realizó.</span>  <br /><br />
             <a href="~/Home/Inicio"><button class="btn btn-default">Regresar</button></a>
         </div>
     </div>
