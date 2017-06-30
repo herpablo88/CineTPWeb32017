@@ -41,6 +41,7 @@ namespace TP_Cine.Controllers
             PeliculasNegocio pelicula = CN.obtenerPeliculaNegocio(int.Parse(form["IdPelicula"]));
             ViewBag.info = form;
             ViewBag.precio = CN.precioTotal(int.Parse(form["IdSede"]), int.Parse(form["CantidadEntradas"]));
+            ViewBag.fecha = Convert.ToDateTime(form["FechaHoraInicio"]);
 
             return View(pelicula);
         }
@@ -72,13 +73,13 @@ namespace TP_Cine.Controllers
             
             Funciones f = new Funciones();
 
-            List<string> funciones = f.obtenerFunciones(pelicula, version, sede); 
+            List<Funciones> funciones = f.obtenerFunciones(pelicula, version, sede); 
 
             List<SelectListItem> fechas = new List<SelectListItem>();
 
-            foreach(string fch in funciones)
+            foreach(Funciones fch in funciones)
             {
-                fechas.Add(new SelectListItem { Text = fch, Value = fch });
+                fechas.Add(new SelectListItem { Text = fch.Texto, Value = fch.FechaHora });
             }
 
             return Json(new SelectList(fechas, "Value", "Text"));

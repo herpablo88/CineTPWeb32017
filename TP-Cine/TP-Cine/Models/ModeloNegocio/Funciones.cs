@@ -7,10 +7,18 @@ namespace TP_Cine.Models.ModeloNegocio
 {
     public class Funciones
     {
-        string FechaHora { get; set; }
+        public string FechaHora { get; set; }
+        public string Texto { get; set; }
 
+        public Funciones() { }
 
-        public List<string> obtenerFunciones(int pelicula, int version, int sede)
+        public Funciones (string valor, string texto)
+        {
+            this.FechaHora = valor;
+            this.Texto = texto;
+        }
+
+        public List<Funciones> obtenerFunciones(int pelicula, int version, int sede)
         {
             Entities ctx = new Entities();
 
@@ -29,7 +37,7 @@ namespace TP_Cine.Models.ModeloNegocio
             DateTime fecha = cartelera.FechaInicio; 
             DateTime hoy = DateTime.Today;
 
-            List<string> funciones = new List<string>(); //Acá voy a agregar todas las fechas y horarios disponibles
+            List<Funciones> funciones = new List<Funciones>(); //Acá voy a agregar todas las fechas y horarios disponibles
 
             TimeSpan difDias = cartelera.FechaFin - cartelera.FechaInicio; //Para saber cuantas fechas consultar
             int cantDias = difDias.Days;
@@ -69,7 +77,7 @@ namespace TP_Cine.Models.ModeloNegocio
             return funciones;
         }
 
-        public void agregarFunciones(List<string> f, DateTime fecha, int hora, int duracion)
+        public void agregarFunciones(List<Funciones> f, DateTime fecha, int hora, int duracion)
         {
             fecha = fecha.Date;
 
@@ -77,7 +85,8 @@ namespace TP_Cine.Models.ModeloNegocio
 
             for (int i = 1; i <= 7; i++)
             {
-                f.Add(horario.Year.ToString()+'/'+horario.Month.ToString()+'/'+horario.Day.ToString()+' '+horario.TimeOfDay.ToString());
+                f.Add(new Funciones(horario.Year.ToString()+'/'+horario.Month.ToString()+'/'+horario.Day.ToString()+' '+horario.TimeOfDay.ToString(), 
+                    horario.ToString()));
                
                 //Despues de agregar la primer funcion indico que para el horario de la proxima sume duracion y media hora
                 horario = horario.AddMinutes(duracion + 30);
