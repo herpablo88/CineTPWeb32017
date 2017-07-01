@@ -30,8 +30,11 @@ namespace TP_Cine.Controllers
         }
 
         [HttpPost]
-        public ActionResult Crear([Bind(Include = "IdCartelera,IdSede,IdPelicula,HoraInicio,FechaInicio,FechaFin,NumeroSala,IdVersion,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo,FechaCarga")] Carteleras carteleras)
+        public ActionResult Crear([Bind(Include = "IdCartelera,IdSede,IdPelicula,HoraInicio,FechaInicio,FechaFin,NumeroSala,IdVersion,Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo")] Carteleras carteleras)
         {
+
+            carteleras.FechaCarga = DateTime.Now;
+
             if (ModelState.IsValid)
             {  
                  
@@ -40,17 +43,19 @@ namespace TP_Cine.Controllers
                if (mensaje != null)
                {
                    ModelState.AddModelError("validacion", mensaje);
-                  
-               }
-               if(mensajeDias != null){
-                    ModelState.AddModelError("validacionDias", mensajeDias);
-               }
-               else
-               {
-                   validar.agregarCartelera(carteleras);
-                   validar.validoDias(carteleras);
-                   return RedirectToAction("Carteleras", "Administracion");
-               }
+
+                }
+                else { 
+                       if(mensajeDias != null){
+                            ModelState.AddModelError("validacionDias", mensajeDias);
+                       }
+                       else
+                       {
+                           validar.agregarCartelera(carteleras);
+                           validar.validoDias(carteleras);
+                           return RedirectToAction("Carteleras", "Administracion");
+                       }
+                }
             }
 
             ViewBag.IdPelicula = new SelectList(db.Peliculas, "IdPelicula", "Nombre", carteleras.IdPelicula);

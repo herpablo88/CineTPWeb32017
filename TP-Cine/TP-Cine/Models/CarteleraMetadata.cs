@@ -43,7 +43,6 @@ namespace TP_Cine.Models
         public bool Sabado { get; set; }
         public bool Domingo { get; set; }
 
-        [Required(ErrorMessage = "Campo Obligatorio")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime FechaCarga { get; set; }
 

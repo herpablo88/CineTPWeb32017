@@ -2,6 +2,5 @@
 $(function () {
     $("#FechaInicio").datepicker();
     $("#FechaFin").datepicker();
-    $("#FechaCarga").datepicker();
 }
 );

@@ -210,6 +210,7 @@
     <Content Include="imagenes\todo_todo.jpg" />
     <Content Include="imagenes\una_ciguena_en_apuros.jpg" />
     <Content Include="js\bootstrap.js" />
+    <Content Include="js\FuncionesCarteleras\Validaciones.js" />
     <Content Include="js\FuncionesPeliculas\PreviewFoto.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.unobtrusive-ajax.min.js" />
