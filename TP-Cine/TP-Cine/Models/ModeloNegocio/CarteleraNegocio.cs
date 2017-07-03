@@ -69,7 +69,7 @@ namespace TP_Cine.Models.ModeloNegocio
           
 
             //verifico si se ingresan datos duplicados
-            if (ctx.Carteleras.Where(d => d.Peliculas == cartelera.Peliculas && d.IdSede == cartelera.IdSede && d.IdVersion == cartelera.IdVersion &&  d.IdVersion == cartelera.IdVersion).Count() > 0)
+            if (ctx.Carteleras.Where(d => d.IdPelicula == cartelera.IdPelicula && d.IdSede == cartelera.IdSede && d.IdVersion == cartelera.IdVersion &&  d.IdCartelera != cartelera.IdCartelera).Count() > 0)
             {
                 return "Error!, Ya existe un registro con misma pelicula,version,sede";
             }

@@ -95,16 +95,19 @@ namespace TP_Cine.Controllers
                 {
                     ModelState.AddModelError("validacion", mensaje);
                 }
-                if (mensajeDias != null)
-                {
-                    ModelState.AddModelError("validacionDias", mensajeDias);
-                }
                 else
                 {
-                    validar.modificarCartelera(carteleras);
-                  
-                    return RedirectToAction("Carteleras", "Administracion");;
-                } 
+                    if (mensajeDias != null)
+                    {
+                        ModelState.AddModelError("validacionDias", mensajeDias);
+                    }
+                    else
+                    {
+                        validar.modificarCartelera(carteleras);
+
+                        return RedirectToAction("Carteleras", "Administracion"); ;
+                    }
+                }
             }
             ViewBag.IdPelicula = new SelectList(db.Peliculas, "IdPelicula", "Nombre", carteleras.IdPelicula);
             ViewBag.IdSede = new SelectList(db.Sedes, "IdSede", "Nombre", carteleras.IdSede);
