@@ -31,18 +31,18 @@ namespace TP_Cine.Models.ModeloNegocio
            }
 
            // no podrá haber más de una cartelera cargada para la misma fecha
-           if (ctx.Carteleras.Where(f => f.FechaInicio >= finicio && f.FechaFin >= ffin && f.FechaInicio <= ffin && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+           if (ctx.Carteleras.Where(f => f.FechaInicio >= finicio && f.FechaFin >= ffin && f.FechaInicio <= ffin && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede).Count() > 0)
            {   
               
                return "Error!,Fecha de fin utilizada por otra cartelera";
            }
 
-           if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin >= ffin && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+           if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin >= ffin && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede).Count() > 0)
            {
                return "Error!,Fechas utilizada por otra cartelera";
            }
 
-           if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin <= ffin && f.FechaFin >= finicio && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+           if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin <= ffin && f.FechaFin >= finicio && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede).Count() > 0)
            {
                return "Error!,Fecha de inicio utilizada por otra cartelera";
            }
@@ -75,18 +75,18 @@ namespace TP_Cine.Models.ModeloNegocio
             }
 
             // no podrá haber más de una cartelera cargada para la misma fecha
-            if (ctx.Carteleras.Where(f => f.FechaInicio >= finicio && f.FechaFin >= ffin && f.FechaInicio <= ffin && f.IdPelicula != cartelera.IdPelicula && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+            if (ctx.Carteleras.Where(f => f.FechaInicio >= finicio && f.FechaFin >= ffin && f.FechaInicio <= ffin && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede && f.IdCartelera != cartelera.IdCartelera).Count() > 0)
             {
 
                 return "Error!,Fecha de fin utilizada por otra cartelera";
             }
 
-            if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin >= ffin && f.IdPelicula != cartelera.IdPelicula && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+            if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin >= ffin && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede && f.IdCartelera != cartelera.IdCartelera).Count() > 0)
             {
                 return "Error!,Fechas utilizada por otra cartelera";
             }
 
-            if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin <= ffin && f.FechaFin >= finicio && f.IdPelicula != cartelera.IdPelicula && f.NumeroSala == cartelera.NumeroSala).Count() > 0)
+            if (ctx.Carteleras.Where(f => f.FechaInicio <= finicio && f.FechaFin <= ffin && f.FechaFin >= finicio && f.NumeroSala == cartelera.NumeroSala && f.IdSede == cartelera.IdSede && f.IdCartelera != cartelera.IdCartelera).Count() > 0)
             {
                 return "Error!,Fecha de inicio utilizada por otra cartelera";
             }
